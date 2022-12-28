@@ -15,57 +15,8 @@
   </head>
   <body class="bg-light">
     <div class="container pb-5">
-      <header class="mb-5 fs-5">
-        <nav class="navbar fixed-top navbar-expand-sm bg-light p-3">
-          <div class="container-fluid">
-            <a href="./a_main.html" class="navbar-brand">
-              <img src="../../../static/img/logo.png" width="100" alt="" />
-            </a>
-            <a
-              href="#collapseId"
-              class="navbar-toggler"
-              data-bs-toggle="collapse"
-              ><span class="navbar-toggler-icon"></span
-            ></a>
-            <div
-              class="collapse navbar-collapse d-flex-md justify-content-between"
-              id="collapseId"
-            >
-              <div class="navbar-nav">
-                <a href="./a_main.html" class="nav-item nav-link">Home</a>
-                <a href="./survey_start.html" class="nav-item nav-link">설문</a>
-                <div class="dropdown">
-                  <a
-                    href=""
-                    class="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    >통계</a
-                  >
-                  <ul class="dropdown-menu mb-3">
-                    <a
-                      href="./statistics_1.html"
-                      class="dropdown-item text-secondary"
-                      >설문자별 답변 결과</a
-                    >
-                    <a
-                      href="./statistics_2.html"
-                      class="dropdown-item text-secondary"
-                      >질문별 총 답변수</a
-                    >
-                  </ul>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <a href="./login.html" class="btn btn-secondary me-2">로그인</a>
-                <a href="./membership.html" class="btn btn-success opacity-75"
-                  >회원가입</a
-                >
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <%@ include file="header.jsp" %>
+      
       <main class="mt-5 p-1">
         <div class="row" style="margin-top: 8%">
           <div class="ms-2 me-5" style="width: 8rem">
@@ -187,60 +138,8 @@
       </main>
     </div>
     <hr />
-    <footer class="bg-light pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col fs-5">
-            <img
-              src="../../../static/img/logo.png"
-              class="mb-3"
-              alt="logo"
-              width="80"
-            />
-            <div class="row">
-              <ul class="col list-unstyled list-dark">
-                <li class="text-secondary h6 mb-0">© 2017-2022</li>
-                <li>
-                  <a
-                    href="http://www.pawinhand.kr/service/agreement.php"
-                    class="text-decoration-none text-secondary h6"
-                    >이용약관
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-decoration-none text-secondary h6"
-                    >개인정보취급방침</a
-                  >
-                </li>
-                <li class="h6 text-secondary">
-                  주식회사 포인핸드 | 대표자 : 이환희 | 개인정보책임관리자 :
-                  <br />
-                  사업자번호 : 322-87-00895 | 사업장 주소 : 서울특별시 마포구
-                  <br />
-                  대흥로 67(정신빌딩) 401호
-                </li>
-              </ul>
-              <ul class="col list-unstyled list-dark">
-                <li class="mb-1 text-decoration-none text-secondary h6">
-                  포인핸드 제공/데이터 출처 농림축산식품부 | Website made by
-                  hummman.com
-                </li>
-                <li class="mb-1 text-decoration-none text-secondary h6">
-                  ⓒPawinhandteam all right reserved.
-                </li>
-                <li class="mb-1">
-                  <a
-                    href="https://www.animals.or.kr/"
-                    class="text-decoration-none text-secondary h6"
-                    >동물자유연대</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <%@ include file="footer.jsp" %>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
