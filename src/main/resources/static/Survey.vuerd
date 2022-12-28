@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -173.33593750000026,
-    "scrollLeft": -436.99999999999983,
+    "scrollTop": -224.00260416666686,
+    "scrollLeft": -173.6666666666667,
     "zoomLevel": 0.8,
     "show": {
       "tableComment": true,
@@ -70,7 +70,7 @@
             "id": "042428a8-e718-48da-9484-de7723aa0e73"
           },
           {
-            "name": "ANSWER",
+            "name": "ANSWER_LIST",
             "comment": "문항답변",
             "dataType": "VARCHAR(200)",
             "default": "",
@@ -85,7 +85,7 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 60,
+              "widthName": 93.74267578125,
               "widthComment": 60,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
@@ -97,7 +97,7 @@
           "active": false,
           "left": 80.4086,
           "top": 297.5974,
-          "zIndex": 108,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -228,7 +228,7 @@
           "active": false,
           "left": 87.8225,
           "top": 69.1554,
-          "zIndex": 106,
+          "zIndex": 2,
           "widthName": 74.72509765625,
           "widthComment": 60
         },
@@ -290,7 +290,7 @@
           "active": false,
           "left": 791.4788,
           "top": 461.2796,
-          "zIndex": 110,
+          "zIndex": 4,
           "widthName": 69.89453125,
           "widthComment": 60
         },
@@ -352,7 +352,7 @@
           "active": false,
           "left": 76.7898,
           "top": 500.0063,
-          "zIndex": 91,
+          "zIndex": 1,
           "widthName": 60,
           "widthComment": 60
         },
@@ -437,7 +437,7 @@
           "active": false,
           "left": 734.4998,
           "top": 141.3333,
-          "zIndex": 112,
+          "zIndex": 5,
           "widthName": 111.078125,
           "widthComment": 70.61181640625
         },
@@ -461,7 +461,7 @@
           "columnIds": [
             "042428a8-e718-48da-9484-de7723aa0e73"
           ],
-          "x": 285.72158828125,
+          "x": 288.254303125,
           "y": 407.5974,
           "direction": "bottom"
         },
@@ -539,7 +539,7 @@
           "columnIds": [
             "042428a8-e718-48da-9484-de7723aa0e73"
           ],
-          "x": 491.0345765625,
+          "x": 496.10000625,
           "y": 352.5974,
           "direction": "right"
         },
