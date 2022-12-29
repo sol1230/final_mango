@@ -1,8 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <header class="mb-5 fs-5">
+      <%-- user_id = (String)session.getAttribute("user_id"); --%>
   <nav class="navbar fixed-top navbar-expand-sm bg-light p-3">
     <div class="container-fluid">
-      <a href="./a_main.html" class="navbar-brand">
-        <img src="../../../static/img/logo.png" width="100" alt="" />
+      <a href="/jsp/a_main.jsp" class="navbar-brand">
+        <img src="../img/logo.png" width="100" alt="" />
       </a>
       <a href="#collapseId" class="navbar-toggler" data-bs-toggle="collapse"
         ><span class="navbar-toggler-icon"></span
@@ -12,7 +15,7 @@
         id="collapseId"
       >
         <div class="navbar-nav">
-          <a href="./a_main.html" class="nav-item nav-link">Home</a>
+          <a href="/jsp/a_main.jsp" class="nav-item nav-link">Home</a>
           <a href="./survey_start.html" class="nav-item nav-link">설문</a>
           <div class="dropdown">
             <a
@@ -33,10 +36,14 @@
           </div>
         </div>
         <div class="d-flex justify-content-center">
-          <a href="./login.html" class="btn btn-secondary me-2">로그인</a>
-          <a href="./membership.html" class="btn btn-success opacity-75"
+          <% if(session.getAttribute("user_id") == null){ %>
+          <a href="/jsp/login.jsp" class="btn btn-secondary me-2">로그인</a>
+          <a href="/jsp/membership.jsp" class="btn btn-success opacity-75"
             >회원가입</a
           >
+          <% } else { %>
+          <a href="/login/logoutServlets" class="btn btn-secondary me-2">로그아웃</a>
+          <% } %>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,10 +26,10 @@
       <main class="mt-5 p-1">
         <div class="row mt-5 text-center">
           <div class="col-12 col-md-6 mx-auto">
-            <form action="./a_main.html" method="get">
+            <form action="/login/loginServlets" method="post">
               <div class="mb-4">
                 <img
-                  src="../../../static/img/hedgehog.png"
+                  src="../img/hedgehog.png"
                   alt="고슴도치"
                   width="150"
                 />
@@ -46,8 +48,8 @@
                   <input
                     type="text"
                     class="form-control opacity-75"
-                    name="id-login"
-                    id="id"
+                    name="user_id"
+                    id="user_id"
                     placeholder="아이디"
                   />
                 </div>
@@ -63,8 +65,8 @@
                   <input
                     type="password"
                     class="form-control opacity-75"
-                    name="password-login"
-                    id="password-login"
+                    name="password"
+                    id="password"
                     placeholder="비밀번호"
                   />
                 </div>
@@ -82,13 +84,13 @@
                 </div>
                 <div class="text-end mb-3">
                   <a
-                    href="./find_users.html"
+                    href="/jsp/find_users.jsp"
                     class="text-decoration-none text-secondary"
                     target="_self"
                     >아이디 또는 비밀번호 찾기</a
                   >
                   <a
-                    href="./find_users.html"
+                    href="/jsp/find_users.jsp"
                     class="btn btn-success btn-sm opacity-75 text-decoration-none text-white"
                     target="_self"
                     id="btn"
@@ -98,12 +100,11 @@
                 </div>
                 <div class="row">
                   <a
-                    href="./membership.html"
+                    href="/jsp/membership.jsp"
                     class="col form-control btn btn-secondary btn-lg fs-5"
                   >
                     회원가입</a
                   >
-
                   <button
                     type="submit"
                     class="col btn btn-success btn-lg opacity-75 ms-3"

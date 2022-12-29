@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +22,7 @@
       <a
         href="http://www.pawinhand.kr/?NaPm=ct%3Dlabp378e%7Cci%3Dcheckout%7Ctr%3Dds%7Ctrx%3D%7Chk%3Dda2e1b5628a1568d188be191f8edc046c080ecbd"
       >
-        <img src="../../../static/img/main.png" width="100%" alt="강아지"
+        <img src="../img/main.png" width="100%" alt="강아지"
       /></a>
     </main>
 

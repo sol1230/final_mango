@@ -1,9 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <footer class="pt-5">
   <div class="container">
     <div class="row">
       <div class="col fs-5">
         <img
-          src="../../../static/img/logo.png"
+          src="../img/logo.png"
           class="mb-3"
           alt="logo"
           width="80"
