@@ -42,7 +42,12 @@
           <a href="/jsp/membership.jsp" class="btn btn-success opacity-75"
             >회원가입</a
           >
-          <%-- 저장도니 세션값이 있으면 로그아웃만 상단바에 보이도록 --%>
+          <%-- 저장된 세션값이 있으면 로그아웃만 상단바에 보이도록 --%>
+          <% } else if(session.getAttribute("user_id").equals("admin")) { %>
+          <a href="/jsp/user_management.jsp" class="btn btn-secondary me-2">회원관리</a>
+          <a href="/login/logoutServlets" class="btn btn-success opacity-75"
+            >로그아웃</a
+          >
           <% } else { %>
           <a href="/login/logoutServlets" class="btn btn-secondary me-2">로그아웃</a>
           <% } %>
