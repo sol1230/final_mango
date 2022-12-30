@@ -39,30 +39,16 @@ public class LoginServlets extends HttpServlet {
 
         // Session
         HttpSession httpSession = null;
-
-        // 아이디 저장-cookie
-        // cookie 생성
-        Cookie cookie = null;
-        cookie = new Cookie("user_id", user_id);
-
-        // 저장이 안되는데..
-        if(checkbox != null && checkbox.equals("on")){
-            // 체크박스 체크 -> 쿠키 저장
-            response.addCookie(cookie);
-        } else {
-            // 체크박스 체크 해제 -> 브라우저에서 삭제
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
-        }
         
         String msg;
+        String path = null;
         try {
             if(loginWithDB.checkLoginDB(user_id, password)){            
                 httpSession = request.getSession();
                 // 세션 저장
                 httpSession.setAttribute("user_id", user_id);
                 httpSession.setAttribute("password", password);
-                response.sendRedirect("/jsp/a_main.jsp");
+                path = "/jsp/a_main.jsp";
 
             }else{
                 if(httpSession == null){
@@ -71,7 +57,7 @@ public class LoginServlets extends HttpServlet {
                     msg = "로그인 정보가 일치하지 않습니다.";
                     httpSession.setAttribute("msg", msg);
                 }
-                response.sendRedirect("/jsp/login.jsp");
+                path = "/jsp/login.jsp";
 
                 // alert창으로 띄우기(jsp에서는 어떻게?-->msg)
                 // printWriter.println("<script type='text/javascript'>");
@@ -85,7 +71,10 @@ public class LoginServlets extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+        requestDispatcher.forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req, resp);

@@ -20,19 +20,7 @@
     />
   </head>
   <body class="bg-light">
-    <%-- 쿠키 --%>
-    <% String cookie = "";
-      // 쿠키 생성
-      Cookie[] cookies = request.getCookies(); 
-      if(cookies != null && cookies.length > 0)
-      for(int i = 0; i < cookies.length; i++){
-        // 일치하는 정보 쿠키에 저장
-        if(cookies[i].getName().equals("user_id")){
-          cookie = cookies[i].getValue();
-        }
-      }
-     String msg = (String)session.getAttribute("msg");
-      %>
+    <% String msg = (String)session.getAttribute("msg"); %>
 
     <div class="container-fluid pb-5">
          <%@ include file="header.jsp" %>
@@ -95,7 +83,7 @@
                     name="checkbox"
                     id="checkbox"
                   />
-                  <label class="form-check-label text-secondary" value="<%= cookie %>" for="checkbox"
+                  <label class="form-check-label text-secondary" for="checkbox"
                     >아이디 저장</label
                   >
                 </div>
