@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,27 +13,35 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../../static/css/font.css" />
+    <link rel="stylesheet" href="/css/font.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
   </head>
   <body class="bg-light">
+  <%
+    String msg = (String)request.getAttribute("msg");
+    String find_id = (String)request.getAttribute("find_id");
+    String id = (String)request.getAttribute("id");
+  %>
     <div class="container-fluid pb-5">
       <%@ include file="header.jsp" %>
       <main class="mt-5">
         <div class="row mt-5 p-5">
           <div class="col-12 col-md-6 text-center pt-5">
-            <form action="./a_main.html">
+            <form action="/find/findUserInfoServlets" method="post">
               <div class="fs-2 text-success opacity-75 mb-4">아이디 찾기</div>
+              <% if(msg != null){ %>
+                <div class="text-success opacity-75 mb-2"> <%= msg %> </div>
+              <% } %>
               <div>
                 <input
                   type="text"
                   class="form-control opacity-75 mb-2"
-                  name="find-id"
-                  id="find-id"
-                  placeholder="아이디"
+                  name="find_id"
+                  id="find_id"
+                  placeholder="이름"
                   required
                 />
               </div>
@@ -39,7 +49,7 @@
                 <div class="text-start text-secondary">휴대전화</div>
                 <div class="row">
                   <div class="col mb-3">
-                    <select class="form-select text-secondary opacity-75">
+                    <select name="phone0" class="form-select text-secondary opacity-75">
                       <option>선택</option>
                       <option value="010">010</option>
                       <option value="012">012</option>
@@ -76,7 +86,7 @@
             </form>
           </div>
           <div class="col-12 col-md-6 text-center pt-5">
-            <form action="./a_main.html">
+            <form form action="/find/findUserInfoServlets" method="post">
               <div class="fs-2 text-success opacity-75 mb-4">비밀번호 찾기</div>
               <div>
                 <input
@@ -94,8 +104,8 @@
                     <input
                       type="text"
                       class="form-control opacity-75 mb-4"
-                      name="find-name"
-                      id="find-name"
+                      name="find_name"
+                      id="find_name"
                       placeholder="이름"
                       required
                     />

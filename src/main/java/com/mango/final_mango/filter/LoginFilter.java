@@ -11,9 +11,10 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 // session이라는 url에 들어오면 필터링
-@WebFilter("/login/*")
+@WebFilter("/survey/*")
 public class LoginFilter implements Filter {
     @Override
     public void destroy() {

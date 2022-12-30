@@ -32,13 +32,27 @@
             더 나은 유기동물의 처우 개선을 위한
           </div>
           <div class="fs-2 text-success">반려동물 설문조사</div>
+          <% if(session.getAttribute("user_id") == null){ 
+          %>
+            <div class="fs-5 opacity-75 mb-3"> 로그인이 필요한 서비스입니다.</div>
+            <button
+            class="btn btn-success opacity-75"
+            onclick="location.href='/jsp/login.jsp'"
+          >
+            로그인
+          </button>
+            <% } else { %>
           <div class="opacity-75 mt-2 mb-3">
             반려동물에 대한 여러분의 생각은 어떠신가요?
           </div>
           <div class="ms-5 d-flex justify-content-center">
-            <a href="/jsp/survey.jsp" class="btn btn-success opacity-75">설문 시작</a>
-          </div>
-
+            <button
+            class="btn btn-success opacity-75"
+            onclick="location.href='/survey/surveyServelt'"
+          >
+            설문 시작
+          </button>
+          <% } %>
         </div>
       </main>
     </div>
