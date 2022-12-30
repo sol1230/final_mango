@@ -19,16 +19,16 @@
 
   <body class="bg-light">
   <% 
-    HashMap<String, Object> question = (HashMap<String, Object>)request.getAttribute("question");
+    ArrayList<HashMap> question_list = (ArrayList<HashMap>) request.getAttribute("question_list");
+    ArrayList<HashMap> answers_list = (ArrayList<HashMap>) request.getAttribute("answers_list");
   %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
-
       <main class="mt-5 p-1">
         <div class="row" style="margin-top: 8%">
         <%-- 설문버튼 --%>
           <div class="ms-2" style="width: 8rem">
-            <form action="/survey/SurveyServlets">
+            <form action="/survey/SurveyServlets" method="get">
             <a
               href="#modalTarget02"
               class="btn btn-success opacity-75 mb-2 text-middle p-3"
@@ -45,28 +45,44 @@
           </div>
 
           <%-- survey --%>
-          <div class="mt-3">
-          <%= question.get("QUESTION_LIST")%>
-          </div>
-          <div>
-             <%
-                ArrayList<HashMap> answers =null;
-                answers = (ArrayList<HashMap>) request.getAttribute("answers");
-              %>
-          <% 
-              for (int i = 0; i < answers.size(); i++){ 
-                 HashMap<String,Object> answers_list = answers.get(i);
-          %>
-          <div> (<%= i + 1 %>) <%= answers_list.get("ANSWER") %> </div>
-          <% } %>
+          <div class="mt-3 text-center">
+            <table class="table text-center table-striped" style="width: 90%">
+              <tbody>
+            <%-- 질문 출력 --%>
+            <% 
+                for (int i = 0; i < question_list.size(); i++){ 
+                  HashMap<String,Object> question = question_list.get(i);
+            %>
+              <tr>                  
+                  <th style="width: 7%">설문<%= (i+1) %></th>
+                  <th class="text-center" colspan="4"> 
+                     <%= question.get("QUESTION_LIST") %> 
+                  </th>
+              </tr>
+              <tr>
+                <td>답</td>
+                <%-- 답변 출력 --%>
+                <%
+                  for(int j = 0; j < answers_list.size(); j++){
+                    HashMap<String,Object> answers = answers_list.get(j);
+                %>
+                  <td>
+                    <input type="radio" class="form-check-input" name="radio_check" id=""/>
+                    <label for="" class="form-check-label">
+                      <%= answers.get("ANSWER_LIST") %>
+                    </label>
+                  </td>
+                <% } %>
+                </tr>
+              <% } %>
+              </tbody>
+            </table>
           </div>
 
           <div class="ms-5 d-flex justify-content-center">
-          <a href="/survey/SurveyResultServlet" class="btn btn-success opacity-75">설문 제출</a>
-            </form>
-          
+            <a href="/survey/SurveyResultServlet" class="btn btn-success opacity-75">설문 제출</a>
           </div>
-        </div>
+        </form>
       </main>
     </div>
     <hr />

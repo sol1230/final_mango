@@ -35,12 +35,10 @@
           <div class="opacity-75 mt-2 mb-3">
             반려동물에 대한 여러분의 생각은 어떠신가요?
           </div>
-          <button
-            class="btn btn-success opacity-75"
-            onclick="location.href='/jsp/survey.jsp'"
-          >
-            설문 시작
-          </button>
+          <div class="ms-5 d-flex justify-content-center">
+            <a href="/jsp/survey.jsp" class="btn btn-success opacity-75">설문 시작</a>
+          </div>
+
         </div>
       </main>
     </div>
