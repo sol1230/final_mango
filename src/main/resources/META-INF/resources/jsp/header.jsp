@@ -17,7 +17,7 @@
         <div class="navbar-nav">
           <a href="/jsp/a_main.jsp" class="nav-item nav-link">Home</a>
           <a href="/jsp/survey_start.jsp" class="nav-item nav-link">설문</a>
-          <div class="dropdown">
+          <div class="dropdown"> 
             <a
               href=""
               class="nav-link dropdown-toggle"
@@ -42,12 +42,13 @@
           <a href="/jsp/membership.jsp" class="btn btn-success opacity-75"
             >회원가입</a
           >
-          <%-- 저장된 세션값이 있으면 로그아웃만 상단바에 보이도록 --%>
+          <%-- 관리자 로그인 회원관리 상단바에 보이도록 --%>
           <% } else if(session.getAttribute("user_id").equals("admin")) { %>
           <a href="/jsp/user_management.jsp" class="btn btn-secondary me-2">회원관리</a>
           <a href="/login/logoutServlets" class="btn btn-success opacity-75"
             >로그아웃</a
           >
+          <%-- 저장된 세션값이 있으면 로그아웃만 상단바에 보이도록 --%>
           <% } else { %>
           <a href="/login/logoutServlets" class="btn btn-secondary me-2">로그아웃</a>
           <% } %>

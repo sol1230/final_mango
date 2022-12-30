@@ -16,6 +16,7 @@ public class LogoutServlets extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //logout
         // Session
+
         HttpSession httpSession = request.getSession();
         // 세션 무효화
         httpSession.invalidate();

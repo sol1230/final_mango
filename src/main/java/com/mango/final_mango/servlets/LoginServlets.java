@@ -9,6 +9,7 @@ import com.mango.final_mango.dao.LoginWithDB;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,36 +28,63 @@ public class LoginServlets extends HttpServlet {
         // input type
         String user_id = request.getParameter("user_id");
         String password = request.getParameter("password");
+        String checkbox = request.getParameter("checkbox");
+
+        System.out.println(checkbox);
+        System.out.println(user_id);
+        System.out.println(password);
 
         // DB 불러오기
         LoginWithDB loginWithDB = new LoginWithDB();
 
         // Session
         HttpSession httpSession = null;
+
+        // 아이디 저장-cookie
+        // cookie 생성
+        Cookie cookie = null;
+        cookie = new Cookie("user_id", user_id);
+
+        // 저장이 안되는데..
+        if(checkbox != null && checkbox.equals("on")){
+            // 체크박스 체크 -> 쿠키 저장
+            response.addCookie(cookie);
+        } else {
+            // 체크박스 체크 해제 -> 브라우저에서 삭제
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
         
+        String msg;
         try {
-            if(loginWithDB.checkLoginDB(user_id, password)){
+            if(loginWithDB.checkLoginDB(user_id, password)){            
                 httpSession = request.getSession();
+                // 세션 저장
                 httpSession.setAttribute("user_id", user_id);
                 httpSession.setAttribute("password", password);
                 response.sendRedirect("/jsp/a_main.jsp");
-                // path = "/jsp/a_main.jsp";
 
             }else{
-                // alert창을 띄우기(jsp에서는 어떻게?)
-                printWriter.println("<script type='text/javascript'>");
-                printWriter.println("alert('로그인 정보가 일치하지 않습니다.')");
-                // 전 페이지로 돌아가게 해주는
-                printWriter.println("history.back();");
-                printWriter.println("</script>");
-                printWriter.flush();
+                if(httpSession == null){
+                    // msg로 로그인 실패 띄우기
+                    httpSession = request.getSession();
+                    msg = "로그인 정보가 일치하지 않습니다.";
+                    httpSession.setAttribute("msg", msg);
+                }
+                response.sendRedirect("/jsp/login.jsp");
+
+                // alert창으로 띄우기(jsp에서는 어떻게?-->msg)
+                // printWriter.println("<script type='text/javascript'>");
+                // printWriter.println("alert('로그인 정보가 일치하지 않습니다.')");
+                // // 전 페이지로 돌아가게 해주는 (아이디 저장 체크 작동 의미 없음)
+                // printWriter.println("history.back();");
+                // printWriter.println("</script>");
+                // printWriter.flush();
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        // dispatcher에 변수를 넘김
-        // RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
-        // requestDispatcher.forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
