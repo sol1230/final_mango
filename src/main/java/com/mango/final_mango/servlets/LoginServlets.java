@@ -52,20 +52,19 @@ public class LoginServlets extends HttpServlet {
 
             }else{
                 if(httpSession == null){
-                    // msg로 로그인 실패 띄우기
-                    httpSession = request.getSession();
-                    msg = "로그인 정보가 일치하지 않습니다.";
-                    httpSession.setAttribute("msg", msg);
-                }
-                path = "/jsp/login.jsp";
+                    // msg로 로그인 실패 띄우기(설문시작 버튼 누르면 msg도 같이 나옴..)
+                    // httpSession = request.getSession();
+                    // msg = "로그인 정보가 일치하지 않습니다.";
+                    // httpSession.setAttribute("msg", msg);
 
-                // alert창으로 띄우기(jsp에서는 어떻게?-->msg)
-                // printWriter.println("<script type='text/javascript'>");
-                // printWriter.println("alert('로그인 정보가 일치하지 않습니다.')");
-                // // 전 페이지로 돌아가게 해주는 (아이디 저장 체크 작동 의미 없음)
-                // printWriter.println("history.back();");
-                // printWriter.println("</script>");
-                // printWriter.flush();
+                    // alert창으로 띄우기(jsp에서는 어떻게?-->msg)
+                    printWriter.println("<script>alert('로그인 정보가 일치하지 않습니다.')");
+                    // 전 페이지로 돌아가게 해주는 (아이디 저장 체크 작동 의미 없음)
+                    printWriter.println("history.back();</script>");
+                    printWriter.flush();
+                }
+                // path = "/jsp/login.jsp";
+
 
             }
         } catch (SQLException e) {
