@@ -20,6 +20,20 @@
     />
   </head>
   <body class="bg-light">
+    <%-- 쿠키 --%>
+    <% String cookie = "";
+      // 쿠키 생성
+      Cookie[] cookies = request.getCookies(); 
+      if(cookies != null && cookies.length > 0)
+      for(int i = 0; i < cookies.length; i++){
+        // 일치하는 정보 쿠키에 저장
+        if(cookies[i].getName().equals("user_id")){
+          cookie = cookies[i].getValue();
+        }
+      }
+     String msg = (String)session.getAttribute("msg");
+      %>
+
     <div class="container-fluid pb-5">
          <%@ include file="header.jsp" %>
 
@@ -34,7 +48,10 @@
                   width="150"
                 />
               </div>
-              <div class="fs-2 text-success opacity-75 mb-3">로그인</div>
+              <div class="fs-2 text-success opacity-75">로그인</div>
+              <% if(msg != null){ %>
+                <div class="text-success opacity-75 mb-2"> <%= msg %> </div>
+              <% } %>
               <div class="row justify-content-center">
                 <div class="col input-group mb-1">
                   <label for="id" class="input-group-text">
@@ -75,10 +92,10 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    name="remember"
-                    id="remember"
+                    name="checkbox"
+                    id="checkbox"
                   />
-                  <label class="form-check-label text-secondary" for="remember"
+                  <label class="form-check-label text-secondary" value="<%= cookie %>" for="checkbox"
                     >아이디 저장</label
                   >
                 </div>
