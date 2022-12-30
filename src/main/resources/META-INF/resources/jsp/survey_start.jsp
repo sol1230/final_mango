@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../../static/css/font.css" />
+    <link rel="stylesheet" href="/css/font.css" />
   </head>
   <body class="bg-light">
     <div class="container pb-5">
@@ -22,7 +23,7 @@
           <div class="img-align">
             <img
               class="img"
-              src="../../../static/img/black-cat.png"
+              src="..//img/black-cat.png"
               alt="cat"
               width="100px%"
             />
@@ -36,7 +37,7 @@
           </div>
           <button
             class="btn btn-success opacity-75"
-            onclick="location.href='./survey.html'"
+            onclick="location.href='/jsp/survey.jsp'"
           >
             설문 시작
           </button>
