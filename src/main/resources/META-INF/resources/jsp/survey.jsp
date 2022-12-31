@@ -19,8 +19,8 @@
 
   <body class="bg-light">
   <% 
-    ArrayList<HashMap> question_list = (ArrayList<HashMap>) request.getAttribute("question_list");
-    ArrayList<HashMap> answers_list = (ArrayList<HashMap>) request.getAttribute("answers_list");
+    ArrayList<HashMap> question_list = (ArrayList<HashMap>)request.getAttribute("question_list");
+    ArrayList<HashMap> answers_list = (ArrayList<HashMap>)request.getAttribute("answers_list");
   %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
@@ -45,7 +45,7 @@
           </div>
 
           <%-- survey --%>
-          <div class="mt-3 text-center">
+          <div class="col text-center ms-5">
             <table class="table text-center table-striped" style="width: 90%">
               <tbody>
             <%-- 질문 출력 --%>
@@ -54,8 +54,7 @@
                   HashMap<String,Object> question = question_list.get(i);
             %>
               <tr>                  
-                  <th style="width: 7%">설문<%= (i+1) %></th>
-                  <th class="text-center" colspan="4"> 
+                  <th class="text-center" colspan="5"> 
                      <%= question.get("QUESTION_LIST") %> 
                   </th>
               </tr>
@@ -67,8 +66,8 @@
                     HashMap<String,Object> answers = answers_list.get(j);
                 %>
                   <td>
-                    <input type="radio" class="form-check-input" name="radio_check" id=""/>
-                    <label for="" class="form-check-label">
+                    <input type="radio" class="form-check-input" name="<%= question.get("QUESTION_UID") %>" id="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" value="<%= answers.get("ANSWER_UID") %>"/>
+                    <label for="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" class="form-check-label">
                       <%= answers.get("ANSWER_LIST") %>
                     </label>
                   </td>
@@ -80,7 +79,7 @@
           </div>
 
           <div class="ms-5 d-flex justify-content-center">
-            <a href="/survey/SurveyResultServlet" class="btn btn-success opacity-75">설문 제출</a>
+            <a href="/jsp/survey_result.jsp" class="btn btn-success opacity-75">설문 제출</a>
           </div>
         </form>
       </main>
