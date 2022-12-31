@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.HashMap, java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,77 +14,58 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../../static/css/font.css" />
+    <link rel="stylesheet" href="/css/font.css" />
   </head>
   <body class="bg-light">
+  <%
+  ArrayList<HashMap> userName_list = (ArrayList<HashMap>)request.getAttribute("userName_list");
+  ArrayList<HashMap> statistics1_list = (ArrayList<HashMap>)request.getAttribute("statistics1_list");
+
+  %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
 
       <main class="mt-5 p-1">
         <div class="row" style="margin-top: 8%">
           <div class="ms-2 me-5" style="width: 8rem">
-            <button
-              class="btn btn-success opacity-75 mb-2"
-              style="width: 6.5rem; height: 4rem"
-              onclick="location.href='./statistics_1.html'"
-            >
-              설문자별 답변 결과
-            </button>
-            <button
-              class="btn btn-success opacity-75"
-              style="width: rem; height: 4rem"
-              onclick="location.href='./statistics_2.html'"
-            >
-              질문별 총 답변수
-            </button>
+          <form action="/result/ststistics1Servlets" method="get">
+            <a href="/jsp/statistics_1.jsp" class="btn btn-success opacity-75 mb-2" style="width: 6.5rem; height: 4rem">설문자별 답변 결과</a>
+           
+            <a href="/jsp/statistics_2.jsp" class="btn btn-success opacity-75" style="width: rem; height: 4rem">질문별 총 답변수</a>
           </div>
           <div class="col mt-5">
             <table class="table text-center" style="width: 90%">
               <thead>
                 <tr class="table-success opacity-75">
                   <th>설문자 명</th>
-                  <th>설문 문항 1</th>
-                  <th>설문 문항 2</th>
-                  <th>설문 문항 3</th>
-                  <th>설문 문항 4</th>
-                  <th>설문 문항 5</th>
+                  <th>설문 1</th>
+                  <th>설문 2</th>
+                  <th>설문 3</th>
+                  <th>설문 4</th>
+                  <th>설문 5</th>
                 </tr>
               </thead>
+              <%-- 통계 출력 --%>
               <tbody>
+              <% 
+                for(int i = 0; i < userName_list.size(); i++){
+                HashMap<String, Object> usersName = userName_list.get(i);
+              %>
                 <tr class="table-light">
-                  <td>유재석</td>
-                  <td>(3) 그렇지 않다</td>
-                  <td>(2) 그렇다</td>
-                  <td>(4) 전혀 그렇지 않다</td>
-                  <td>(1) 매우 그렇다</td>
-                  <td>(3) 그렇지 않다</td>
+                  <td><%= usersName.get("NAME") %></td>
+                 <%
+                 for(int j = 0; j < statistics1_list.size(); j++){
+                HashMap<String, Object> statistics1 = statistics1_list.get(j);
+                 %>
+                 <td><%= statistics1.get("QUESTION_LIST") %></td>
+                 <td><%= statistics1.get("ANSWER_LIST") %></td>
+                <% } %>
                 </tr>
-                <tr>
-                  <td>김종국</td>
-                  <td>(1) 매우 그렇다</td>
-                  <td>(2) 그렇다</td>
-                  <td>(3) 그렇지 않다</td>
-                  <td>(4) 전혀 그렇지 않다</td>
-                  <td>(1) 매우 그렇다</td>
-                </tr>
-                <tr class="table-light">
-                  <td>손예진</td>
-                  <td>(2) 그렇다</td>
-                  <td>(1) 매우 그렇다</td>
-                  <td>(4) 전혀 그렇지 않다</td>
-                  <td>(3) 그렇지 않다</td>
-                  <td>(2) 그렇다</td>
-                </tr>
-                <tr>
-                  <td>KH</td>
-                  <td>(4) 전혀 그렇지 않다</td>
-                  <td>(3) 그렇지 않다</td>
-                  <td>(1) 매우 그렇다</td>
-                  <td>(2) 그렇다</td>
-                  <td>(4) 전혀 그렇지 않다</td>
-                </tr>
+             <% } %>
+                
               </tbody>
             </table>
+            </form>
           </div>
         </div>
       </main>
