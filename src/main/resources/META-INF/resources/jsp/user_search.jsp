@@ -21,7 +21,7 @@
 
       <main class="mt-5 p-1">
         <div class="mt-5">
-          <form action="/userSearch">
+            <form action="/userSearch">
             <select name="keyField" id="">
               <option value="NAME">이름</option>
               <option value="BIRTH_DATE">생년월일</option>
@@ -42,59 +42,21 @@
             </thead>
             <tbody>
                 <% 
-                    ArrayList<HashMap> user_list = null; 
-                    user_list = (ArrayList<HashMap>) request.getAttribute("user_list");
-                    ArrayList<HashMap> search_list = null;
+                    ArrayList<HashMap> search_list = null; 
                     search_list = (ArrayList<HashMap>) request.getAttribute("search_list");
                 %>
                 <%
-                    for(int i = 0; i < user_list.size(); i++){
-                        HashMap<String, Object> user = user_list.get(i);
-                    
-                %>
-              <form action="">
-                <tr>
-                  <td><%= user.get("USER_ID") %></td>
-                  <td><%= user.get("NAME") %></td> 
-                  <td><%= user.get("BIRTH_DATE") %></td>
-                  <td><%= user.get("PHONE") %></td>
-                  <td><button class="btn btn-success">삭제</button></td>
-                </tr>
-              </form>
-              <% } %>
-
-                <%-- <%
-                  if(keyWord != null && !keyWord.equals("")) {
-                %>
-                  <%
                     for(int i = 0; i < search_list.size(); i++){
                         HashMap<String, Object> search = search_list.get(i);
-                  %>
-                    <tr>
-                        <td><%= search.get("USER_ID") %></td>
-                        <td><%= search.get("NAME") %></td>
-                        <td><%= search.get("BIRTH_DATE") %></td>
-                        <td><%= search.get("PHONE") %></td>
-                        <td><button class="btn btn-success">삭제</button></td>
-                    </tr>
-                  <% } %> 
-                <% } %> --%>
-                <%-- <%
-                  else {
                 %>
-                  <%
-                    for(int i = 0; i < user_list.size(); i++){
-                        HashMap<String, Object> user = user_list.get(i);
-                  %>
-                    <tr>
-                      <td><%= user.get("USER_ID") %></td>
-                      <td><%= user.get("NAME") %></td> 
-                      <td><%= user.get("BIRTH_DATE") %></td>
-                      <td><%= user.get("PHONE") %></td>
-                      <td><button class="btn btn-success">삭제</button></td>
-                    </tr>
-                  <% } %> 
-                <% } %> --%>
+              <tr>
+                <td><%= search.get("USER_ID") %></td>
+                <td><%= search.get("NAME") %></td>
+                <td><%= search.get("BIRTH_DATE") %></td>
+                <td><%= search.get("PHONE") %></td>
+                <td><button class="btn btn-success">삭제</button></td>
+              </tr>
+              <% } %>
             </tbody>
           </table>
         </div>
