@@ -18,7 +18,7 @@
     <div class="container-fluid pb-5">
 
       <%@ include file="header.jsp" %>
-
+      <form action="/SignUpServlet" method="post">
       <main class="mt-5 p-1">
         <div class="row mt-5 text-center">
           <div class="col-12 col-md-6 mx-auto">
@@ -134,5 +134,6 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    </form>
   </body>
 </html>
