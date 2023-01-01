@@ -26,25 +26,17 @@ public class Statistics2Servlet extends HttpServlet {
     //DB
     SurveyResultWithDB surveyResultWithDB = new SurveyResultWithDB();
 
-    ArrayList<HashMap> question_list = null;
-    HashMap<String, Object> question = null;
     ArrayList<HashMap> statistics_list = null;
     HashMap<String, Object> statistics = null;
 
     try {
-      question_list = surveyResultWithDB.getQuestion();
       statistics_list = surveyResultWithDB.getStatistics2();
 
       // 확인용
-      for (int j = 0; j < question_list.size(); j++) {
-        question = question_list.get(j);
-        System.out.println(question.get("QUESTION_LIST"));
-
-        for (int i = 0; i < statistics_list.size(); i++) {
-          statistics = statistics_list.get(i);
-          System.out.println(statistics.get("ANSWER_LIST"));
-          System.out.println(statistics.get("nums"));
-        }
+      for (int i = 0; i < statistics_list.size(); i++) {
+        statistics = statistics_list.get(i);
+        System.out.println(statistics.get("QUESTION_UID"));
+        System.out.println(statistics.get("ANSWER_UID"));
       }
     } catch (SQLException e) {
       e.printStackTrace();

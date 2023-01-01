@@ -64,9 +64,6 @@
                 <tr>
                   <td><%= statistics.get("ANSWER_LIST") %></td>
                 </tr>
-                <tr>
-                  <td><%= statistics.get("nums") %></td>
-                </tr>
                <% } %>
               </tbody>
             </table>

@@ -33,7 +33,7 @@ public class Statistics1Servlet extends HttpServlet {
 
     try {
       userName_list = surveyResultWithDB.getSurveyorName();
-      statistics1_list = surveyResultWithDB.getStatistics1();
+      statistics1_list = surveyResultWithDB.getStatistics1_2();
 
       // 확인용
       for (int i = 0; i < userName_list.size(); i++) {
@@ -41,8 +41,7 @@ public class Statistics1Servlet extends HttpServlet {
         System.out.println(userName.get("NAME"));
         for (int j = 0; j < statistics1_list.size(); j++) {
           statistics1 = statistics1_list.get(j);
-          System.out.println(statistics1.get("QUESTION_LIST"));
-          System.out.println(statistics1.get("ANSWER_LIST"));
+          System.out.println(statistics1.get("U1"));
         }
       }
     } catch (SQLException e) {
