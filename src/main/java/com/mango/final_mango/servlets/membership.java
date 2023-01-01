@@ -13,20 +13,21 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/join/membership")
 public class membership extends HttpServlet{
  
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServlet#doGet(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse)
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HashMap<String,Object> userData = new HashMap<>();
-
-        userData.put("USER_ID", request.getParameter("USER_id"));
-        userData.put("PASSWORD", request.getParameter("PASSWORD"));
-        userData.put("NAME", request.getParameter("NAME"));
-        userData.put("BIRTH_DATE", request.getParameter("BIRTH_DATE"));
-        userData.put("PHONE", request.getParameter("PHONE"));
+        
+        
+ 
 
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/membership.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/membership.jsp");
         requestDispatcher.forward(request, response);
+
+       
     }
 
 }
