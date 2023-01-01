@@ -19,11 +19,13 @@ public class UserManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_uid = request.getParameter("USER_ID");
+        String keyWord = request.getParameter("keyWord");
+        String keyField = request.getParameter("keyField");
         UserWithDB userWithDB = new UserWithDB();
         ArrayList<HashMap> user_list = null;
 
         try {
-            user_list = userWithDB.getUser(user_uid);
+            user_list = userWithDB.getUser(user_uid, keyWord, keyField);
         } catch (SQLException e) {
             e.printStackTrace();
         }
