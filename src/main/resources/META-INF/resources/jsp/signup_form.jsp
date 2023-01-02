@@ -39,7 +39,7 @@
                       placeholder="아이디"
                       required
                     />
-                    <button class="btn btn-secondary">중복확인</button>
+                    
                   </div>
                 </div>
                 <div id="password-member">
