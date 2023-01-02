@@ -1,8 +1,5 @@
 package com.mango.final_mango.dao;
 
-import java.lang.Thread.State;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,42 +33,44 @@ public class SurveyResultWithDB {
     return checkUser;
   }
 
-  // public ArrayList<HashMap> getmySurvey(String user_id) throws SQLException {
-  //   Commons commons = new Commons();
-  //   Statement statement = commons.getStatement();
+  public ArrayList<HashMap> getmySurvey(String user_id) throws SQLException {
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
 
-  //   String query =
-  //     "SELECT * FROM USERS_ANSWER " +
-  //     "WHERE USER_ID = '" +
-  //     user_id +
-  //     "'" +
-  //     "ORDER BY QUESTION_UID ";
+    String query =
+      "SELECT * FROM USERS_ANSWER " +
+      "WHERE USER_ID = '" +
+      user_id +
+      "'" +
+      "ORDER BY QUESTION_UID ";
 
-  //   ResultSet resultSet = statement.executeQuery(query);
-  //   ArrayList<HashMap> answers = new ArrayList<>();
-  //   HashMap<String, Object> userAnswer = null;
-  //   while (resultSet.next()) {
-  //     userAnswer = new HashMap<>();
-  //     userAnswer.put("USER_ID", resultSet.getString("USER_ID"));
-  //     userAnswer.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
-  //     userAnswer.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
+    ResultSet resultSet = statement.executeQuery(query);
+    ArrayList<HashMap> answers = new ArrayList<>();
+    HashMap<String, Object> userAnswer = null;
+    while (resultSet.next()) {
+      userAnswer = new HashMap<>();
+      userAnswer.put("USER_ID", resultSet.getString("USER_ID"));
+      userAnswer.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
+      userAnswer.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
 
-  //     answers.add(userAnswer);
-  //   }
-  //   return answers;
-  // }
+      answers.add(userAnswer);
+    }
+    return answers;
+  }
 
-  public String getUserName(String user_id) throws SQLException {
+  public HashMap<String, Object> getUserName(String user_id)
+    throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
 
     String query =
       "SELECT * FORM SURVEYOR " + "WHERE USER_ID = '" + user_id + "'";
 
-    String userName = null;
     ResultSet resultSet = statement.executeQuery(query);
+    HashMap<String, Object> userName = null;
     while (resultSet.next()) {
-      userName = resultSet.getString("NAME");
+      userName = new HashMap<>();
+      userName.put("NAME", resultSet.getString("NAME"));
     }
     return userName;
   }
@@ -94,6 +93,36 @@ public class SurveyResultWithDB {
       question_list.add(question);
     }
     return question_list;
+  }
+
+  // 답 출력
+  public ArrayList<HashMap> getAnswer(String user_id) throws SQLException {
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
+
+    String query =
+      "SELECT * FROM SURVEYOR INNER JOIN USERS_ANSWER " +
+      "ON SURVEYOR.USER_ID = USERS_ANSWER.USER_ID INNER JOIN ANSWER " +
+      "ON USERS_ANSWER.ANSWER_UID = ANSWER.ANSWER_UID WHERE SURVEYOR.USER_ID='" +
+      user_id +
+      "' " +
+      "ORDER BY USERS_ANSWER.QUESTION_UID";
+
+    ResultSet resultSet = statement.executeQuery(query);
+
+    ArrayList<HashMap> answers_list = new ArrayList<>();
+    HashMap<String, Object> answers = null;
+
+    while (resultSet.next()) {
+      answers = new HashMap<>();
+      answers.put("NAME", resultSet.getString("NAME"));
+      answers.put("USER_ID", resultSet.getString("USER_ID"));
+      answers.put("ANSWER_LIST", resultSet.getString("ANSWER_LIST"));
+
+      answers_list.add(answers);
+    }
+
+    return answers_list;
   }
 
   // 설문자별 답변 결과

@@ -20,7 +20,7 @@
   <%
      ArrayList<HashMap> question_list = (ArrayList<HashMap>)request.getAttribute("question_list");
     ArrayList<HashMap> answers_list = (ArrayList<HashMap>)request.getAttribute("answers_list");
-    String userName = (String) request.getAttribute("userName");
+    HashMap<String, Object> userName = (HashMap<String, Object>)request.getAttribute("userName");
   %>
     <div class="container pb-5">
     <%@ include file="header.jsp" %>
@@ -29,7 +29,7 @@
       <main class="mt-5 p-1">
         <div class="row" style="margin-top: 8%">
           <div class="ms-2" style="width: 8rem">
-          <form action="/survey/surveyResultServlets" method="get">
+          <form action="/survey/UserResult" method="get">
             <a
               href="#modalTarget02"
               class="btn btn-success opacity-75 mb-2 text-middle p-3"
@@ -50,7 +50,7 @@
               </div>
             </div>
 
-            <a href="/survey/surveyResultServlets"
+            <a href="/survey/UserResult"
               class="btn btn-success opacity-75"
               style="width: rem; height: 4rem"
             >
@@ -62,26 +62,21 @@
             <table class="table text-center" style="width: 90%">
               <thead>
                 <tr class="table-light">
-                  <th>설문자 명</th>
+                  <th><%= userName.get("NAME") %></th>
                     <%
                       for(int i = 0; i< question_list.size(); i++){
                         HashMap<String,Object> question = question_list.get(i);
+                        HashMap<String, Object> answers = answers_list.get(i);
                     %>
                   <th><%= question.get("QUESTION_LIST") %></th>
                 </tr>
-                 <%     } %>
               </thead>
               <tbody>
                 <tr>
-                <td><%= userName %>
-                <%
-                  for(int j = 0; j <answers_list.size(); j++){
-                    HashMap<String, Object> answers = answers_list.get(ㅓ);
-                %>
-                  <td><%= answers.get("ANSWER_UID") %></td>
+                  <td><%= answers.get("ANSWER_LIST") %></td>
                 </tr>
-              <%    } %>
               </tbody>
+              <%    } %>
             </table>
             </form>
           </div>
