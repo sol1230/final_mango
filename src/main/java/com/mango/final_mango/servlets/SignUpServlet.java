@@ -1,6 +1,7 @@
 package com.mango.final_mango.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import com.mango.final_mango.dao.SignUpDB;
@@ -25,6 +26,11 @@ public class SignUpServlet extends HttpServlet{
         userData.put("BIRTH_DATE", request.getParameter("BIRTH_DATE"));
         userData.put("PHONE", request.getParameter("PHONE"));
         
+        try {
+            SignUpDB.setUserData(userData);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_submit.jsp");
         requestDispatcher.forward(request, response);
