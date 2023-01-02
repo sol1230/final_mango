@@ -38,7 +38,7 @@ public class MembershipServlet extends HttpServlet {
                 request.setAttribute("msg", msg);
                 request.setAttribute("password", password);
                 request.setAttribute("password_check", password_check);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_test22222.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_form.jsp");
                 requestDispatcher.forward(request, response);
             } else {
                 membershipBean.setUSER_ID(user_id);
@@ -47,7 +47,7 @@ public class MembershipServlet extends HttpServlet {
                 membershipBean.setPASSWORD(password);
                 membershipBean.setPHONE(phone);
                 membershipWithDB.insertMember(membershipBean);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done_test22222.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done.jsp");
                 requestDispatcher.forward(request, response);
             }
         }
