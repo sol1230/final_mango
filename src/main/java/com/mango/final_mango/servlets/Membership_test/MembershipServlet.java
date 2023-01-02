@@ -32,7 +32,7 @@ public class MembershipServlet extends HttpServlet {
 
         if(!membershipWithDB.idCheck(user_id)){
             // 이미 만들어진 아이디면
-            printWriter.println("<script>alert('중복된 아이디입니다.'); history.back();</script>");
+            printWriter.println("<script>alert('이미 사용 중인 아이디입니다.'); history.back();</script>");
         } else {
             if(!password.equals(password_check)){
                 request.setAttribute("msg", msg);
