@@ -20,8 +20,6 @@
     />
   </head>
   <body class="bg-light">
-    <% String msg = (String)session.getAttribute("msg"); %>
-
     <div class="container-fluid pb-5">
          <%@ include file="header.jsp" %>
 
@@ -37,9 +35,6 @@
                 />
               </div>
               <div class="fs-2 text-success opacity-75">로그인</div>
-              <% if(msg != null){ %>
-                <div class="text-success opacity-75 mb-2"> <%= msg %> </div>
-              <% } %>
               <div class="row justify-content-center">
                 <div class="col input-group mb-1">
                   <label for="id" class="input-group-text">

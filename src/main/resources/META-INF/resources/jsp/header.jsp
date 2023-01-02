@@ -44,7 +44,7 @@
           >
           <%-- 관리자 로그인 회원관리 상단바에 보이도록 --%>
           <% } else if(session.getAttribute("user_id").equals("admin")) { %>
-          <a href="/jsp/user_management.jsp" class="btn btn-secondary me-2">회원관리</a>
+          <a href="/admin/userList" class="btn btn-secondary me-2">회원관리</a>
           <a href="/login/logoutServlets" class="btn btn-success opacity-75"
             >로그아웃</a
           >

@@ -37,8 +37,8 @@ public class LoginFilter implements Filter {
         HttpSession httpSession = httpServletRequest.getSession();
 
         if(httpSession.getAttribute("user_id") == null){
-            printWriter.println("<script>alert('로그인이 필요한 서비스입니다.')");
-            printWriter.println("location.href = '/jsp/login.jsp' </script>");
+            printWriter.println("<script>alert('로그인이 필요한 서비스입니다.'); location.href = '/jsp/login.jsp' </script>");
+
             // jsp는 response가 우선순위라 alert창이 뜨지 않음 --> html안에 경로 넣어주기
             // httpServletResponse.sendRedirect("/jsp/login.jsp");
         } else {
