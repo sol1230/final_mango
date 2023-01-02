@@ -50,4 +50,50 @@ public class SurveyWithDB {
 
     return answers_list;
   }
+
+  // 설문 완료 사용자 확인
+  public void checkUser(String user_id) {
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
+  }
+
+  // 새로운 설문 결과 DB에 추가
+  public void insertSurvey(
+    String user_id,
+    String q1,
+    String q2,
+    String q3,
+    String q4,
+    String q5
+  )
+    throws SQLException {
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
+
+    String query =
+      "INSERT INTO USERS_ANSWER(USER_ID, QUESTION_UID, ANSWER_UID) " +
+      "VALUES ('" +
+      user_id +
+      "', 'Q1', '" +
+      q1 +
+      "'), ('" +
+      user_id +
+      "', 'Q2', '" +
+      q2 +
+      "'), ('" +
+      user_id +
+      "', 'Q3', '" +
+      q3 +
+      "'), ('" +
+      user_id +
+      "', 'Q4', '" +
+      q4 +
+      "'), ('" +
+      user_id +
+      "', 'Q5', '" +
+      q5 +
+      "')";
+
+    statement.executeQuery(query);
+  }
 }
