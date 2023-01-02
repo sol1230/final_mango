@@ -39,7 +39,7 @@
         <%-- 저장된 세션값이 없으면 로그인, 회원가입이 상단바에 보이도록 --%>
           <% if(session.getAttribute("user_id") == null){ %>
           <a href="/jsp/login.jsp" class="btn btn-secondary me-2">로그인</a>
-          <a href="/jsp/membership.jsp" class="btn btn-success opacity-75"
+          <a href="/jsp/signup_test22222.jsp" class="btn btn-success opacity-75"
             >회원가입</a
           >
           <%-- 관리자 로그인 회원관리 상단바에 보이도록 --%>
