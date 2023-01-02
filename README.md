@@ -50,7 +50,7 @@
    -[User DB](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/dao/UserWithDB.java)
 
 2. Servlet  
-   -[User Management](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/UserManagement.java)
+   -[Admin User List](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/AdminUserList.java)
 
 ## 📚구현 페이지 이미지
 <div>
@@ -65,7 +65,7 @@
 
 ## 📹구현 영상
 
--[Video]()
+-[Video](https://youtu.be/bIDMNy5KAWk)
 
 ## 🔋주요 코드
 #### 회원 정보 받아오기
