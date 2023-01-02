@@ -22,23 +22,34 @@ public class MembershipServlet extends HttpServlet {
         String name = request.getParameter("name-member");
         String birth_date = request.getParameter("birth-member");
         String password = request.getParameter("password-memeber");
+        String password_check = request.getParameter("password-check");
         String phone = request.getParameter("phone0") + "-" + request.getParameter("phone1") + "-" + request.getParameter("phone2");
 
         MembershipWithDB membershipWithDB = new MembershipWithDB();
         MembershipBean membershipBean = new MembershipBean();
 
+        String msg = "비밀번호가 일치하지 않습니다.";
+
         if(!membershipWithDB.idCheck(user_id)){
             // 이미 만들어진 아이디면
             printWriter.println("<script>alert('중복된 아이디입니다.'); history.back();</script>");
         } else {
-            membershipBean.setUSER_ID(user_id);
-            membershipBean.setNAME(name);
-            membershipBean.setBIRTH_DATE(birth_date);
-            membershipBean.setPASSWORD(password);
-            membershipBean.setPHONE(phone);
-            membershipWithDB.insertMember(membershipBean);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done_test22222.jsp");
-            requestDispatcher.forward(request, response);
+            if(!password.equals(password_check)){
+                request.setAttribute("msg", msg);
+                request.setAttribute("password", password);
+                request.setAttribute("password_check", password_check);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_test22222.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                membershipBean.setUSER_ID(user_id);
+                membershipBean.setNAME(name);
+                membershipBean.setBIRTH_DATE(birth_date);
+                membershipBean.setPASSWORD(password);
+                membershipBean.setPHONE(phone);
+                membershipWithDB.insertMember(membershipBean);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done_test22222.jsp");
+                requestDispatcher.forward(request, response);
+            }
         }
     }
     @Override

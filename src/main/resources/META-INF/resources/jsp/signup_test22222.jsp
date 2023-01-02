@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="/css/font.css" />
   </head>
   <body class="bg-light">
+    <% String msg = (String)request.getAttribute("msg");
+       String password = (String)request.getAttribute("password");
+       String password_check = (String)request.getAttribute("password_check");
+    %>
     <div class="container-fluid pb-5">
 
       <%@ include file="header.jsp" %>
@@ -57,6 +61,9 @@
                     placeholder="비밀번호 재입력"
                     required
                   />
+                <% if(msg!=null) { %>
+                  <div class="text-secondary opacity-75"> <%= msg %> </div>
+                <% } %>
                 </div>
                 <div id="name-memeber">
                   <input
