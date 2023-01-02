@@ -25,7 +25,7 @@ public class UserWithDB {
     if(keyWord != null) {
       resultSet = statement.executeQuery(query2);
       ArrayList<HashMap> user_list = new ArrayList<>();
-    while(resultSet.next()){
+      while(resultSet.next()){
         HashMap<String, Object> user = new HashMap<String, Object>();
         user.put("USER_ID", resultSet.getString("USER_ID"));
         user.put("NAME", resultSet.getString("NAME"));
@@ -49,6 +49,29 @@ public class UserWithDB {
       }
       return user_list;
     }
+  }
+  public ArrayList<HashMap> getUserDelete(String userDelete) throws SQLException{
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
 
+    String query = "DELETE FROM USERS_ANSWER " +
+                    "WHERE USER_ID = 'U4'" +
+                    " DELETE FROM SURVEYOR " +
+                    "WHERE USER_ID = 'U6'" +
+                    " SELECT * FROM SURVEYOR";
+    
+    ResultSet resultSet = statement.executeQuery(query);
+
+    ArrayList<HashMap> user_delete_list = new ArrayList<>();
+    while(resultSet.next()){
+      HashMap<String, Object> user_delete = new HashMap<String, Object>();
+      user_delete.put("USER_ID", resultSet.getString("USER_ID"));
+      user_delete.put("NAME", resultSet.getString("NAME"));
+      user_delete.put("BIRTH_DATE", resultSet.getString("BIRTH_DATE"));
+      user_delete.put("PHONE", resultSet.getString("PHONE"));
+
+      user_delete_list.add(user_delete);
+    }
+    return user_delete_list;
   }
 }

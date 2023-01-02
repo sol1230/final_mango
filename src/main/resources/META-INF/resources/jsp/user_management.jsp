@@ -44,19 +44,21 @@
                 <% 
                     ArrayList<HashMap> user_list = null; 
                     user_list = (ArrayList<HashMap>) request.getAttribute("user_list");
+                    ArrayList<HashMap> user_delete_list = null; 
+                    user_delete_list = (ArrayList<HashMap>) request.getAttribute("user_delete_list");
                 %>
                 <%
                     for(int i = 0; i < user_list.size(); i++){
                         HashMap<String, Object> user = user_list.get(i);
                     
                 %>
-              <form action="">
+              <form action="/userManagement/getUserDelete">
                 <tr>
                   <td><%= user.get("USER_ID") %></td>
                   <td><%= user.get("NAME") %></td> 
                   <td><%= user.get("BIRTH_DATE") %></td>
                   <td><%= user.get("PHONE") %></td>
-                  <td><button class="btn btn-success">삭제</button></td>
+                  <td><button type="submit" class="btn btn-success opacity-75">삭제</button></td>
                 </tr>
               </form>
               <% } %>

@@ -29,7 +29,16 @@
                 <%-- <a href="" class="btn btn-secondary">Search</a> --%>
               <%-- </div>
             </form> --%>
-            <table class="table text-center">
+          <form action="/admin/userList">
+            <select name="keyField" id="">
+              <option value="NAME">이름</option>
+              <option value="BIRTH_DATE">생년월일</option>
+              <option value="PHONE">전화번호</option>
+            </select>
+            <input type="text" name="keyWord" id="">
+            <button type="submit" class="btn btn-success opacity-75">검색</button>
+          </form>
+            <table class="table text-center mt-3">
               <thead>
                 <tr class="table-success opacity-75">
                   <th>아이디</th>
@@ -46,15 +55,15 @@
                       user_list = (ArrayList<HashMap>) request.getAttribute("user_list");
                   %>
                   <%
-                      for(int i = 1; i < user_list.size(); i++){
+                      for(int i = 0; i < user_list.size(); i++){
                           HashMap<String, Object> user = user_list.get(i);
                   %>
-                 <form action="/admin/userManagementServlet" method="post">
                 <tr>
                   <% String user_id = (String)user.get("USER_ID"); %>
                   <% String name = (String)user.get("NAME"); %>
+                 <form action="/admin/userManagementServlet" method="post">
                   <th><%= user_id %></th>
-                  <th><%= user.get("NAME") %></th>
+                  <th><%= name %></th>
                   <th><%= user.get("BIRTH_DATE") %></th>
                   <th><%= user.get("PHONE") %></th>
                   <th>
