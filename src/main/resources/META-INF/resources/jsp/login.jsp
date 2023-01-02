@@ -53,7 +53,7 @@
                     placeholder="아이디"
                   />
                 </div>
-                <div class="input-group mb-2" id="password-input">
+                <div class="input-group mb-3" id="password-input">
                   <label for="password" class="input-group-text">
                     <i
                       class="material-icons col-1 text-secondary fs-5"
@@ -71,7 +71,7 @@
                   />
                 </div>
 
-                <div class="text-end">
+                <%-- <div class="text-end">
                   <input
                     type="checkbox"
                     class="form-check-input"
@@ -81,7 +81,7 @@
                   <label class="form-check-label text-secondary" for="checkbox"
                     >아이디 저장</label
                   >
-                </div>
+                </div> --%>
                 <div class="text-end mb-3">
                   <a
                     href="/jsp/find_users.jsp"
