@@ -33,15 +33,16 @@ public class Statistics2Servlet extends HttpServlet {
       statistics_list = surveyResultWithDB.getStatistics2();
 
       // 확인용
-      for (int i = 0; i < statistics_list.size(); i++) {
-        statistics = statistics_list.get(i);
-        System.out.println(statistics.get("QUESTION_UID"));
-        System.out.println(statistics.get("ANSWER_UID"));
+      for (int j = 0; j < statistics_list.size(); j++) {
+        statistics = statistics_list.get(j);
+        System.out.println(statistics.get("E1"));
+        System.out.println(statistics.get("E2"));
+        System.out.println(statistics.get("E3"));
+        System.out.println(statistics.get("E4"));
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     request.setAttribute("statistics_list", statistics_list);
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher(

@@ -142,12 +142,10 @@ public class SurveyResultWithDB {
     HashMap<String, Object> statistics = null;
     while (resultSet.next()) {
       statistics = new HashMap<>();
-      String E1 = resultSet.getString("E1");
-      String E2 = resultSet.getString("E2");
-      String E3 = resultSet.getString("E3");
-      String E4 = resultSet.getString("E4");
-      statistics.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
-      statistics.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
+      statistics.put("E1", resultSet.getInt("E1"));
+      statistics.put("E2", resultSet.getInt("E2"));
+      statistics.put("E3", resultSet.getInt("E3"));
+      statistics.put("E4", resultSet.getInt("E4"));
 
       statistics_list.add(statistics);
     }
