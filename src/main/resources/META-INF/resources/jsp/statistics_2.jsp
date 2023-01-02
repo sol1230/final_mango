@@ -18,7 +18,7 @@
   </head>
   <body class="bg-light">
   <%
-  ArrayList<HashMap> statistics_list = (ArrayList<HashMap>)request.getAttribute("statistics_list");
+   ArrayList<HashMap> statistics_list = (ArrayList<HashMap>)request.getAttribute("statistics_list");  
   %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
@@ -42,7 +42,7 @@
               질문별 총 답변수
             </button>
           </div>
-          <div class="col mt-5 mb-5">
+          <div class="col mb-5">
             <table class="table text-center" style="width: 90%">
               <thead>
                 <tr class="table-success opacity-75">
@@ -53,18 +53,121 @@
               </thead>
               <tbody>
               <%-- 통계 출력 --%>
-                <%
-                  for(int i = 0; i < statistics_list.size(); i++){
-                  HashMap<String, Object> statistics = statistics_list.get(i);
+                <% 
+                  HashMap<String, Object> statistics0 = (HashMap<String, Object>)statistics_list.get(0);
+                  int E1 = (int)statistics0.get("E1");
+                  int E2 = (int)statistics0.get("E2");
+                  int E3 = (int)statistics0.get("E3");
+                  int E4 = (int)statistics0.get("E4");
                 %>
                 <tr class="table-light">
-                  <th rowspan="3" class=""><%=(i+1) %></th>
-                  <th colspan="5"><%= statistics.get("QUESTION_LIST") %></th>
+                  <th rowspan="3" class="">1</th>
+                  <th colspan="5">반려동물에 관심이 있나요?</th>
                 </tr>
                 <tr>
-                  <td><%= statistics.get("ANSWER_LIST") %></td>
+                  <td>(1) 매우 그렇다</td>
+                  <td>(2) 그렇다</td>
+                  <td>(3) 그렇지 않다</td>
+                  <td>(4) 전혀 그렇지 않다</td>
                 </tr>
-               <% } %>
+                <tr>
+                  <td><%= E1 %></td>
+                  <td><%= E2 %></td>
+                  <td><%= E3 %></td>
+                  <td><%= E4 %></td>
+                </tr>
+                <% 
+                  HashMap<String, Object> statistics1 = (HashMap<String, Object>)statistics_list.get(1);
+                  int E1_1 = (int)statistics1.get("E1");
+                  int E2_1 = (int)statistics1.get("E2");
+                  int E3_1 = (int)statistics1.get("E3");
+                  int E4_1 = (int)statistics1.get("E4");
+                %>
+                <tr class="table-light">
+                  <th rowspan="3" class="">2</th>
+                  <th colspan="5">반려동물을 키울 생각이 있나요?</th>
+                </tr>
+                <tr>
+                  <td>(1) 매우 그렇다</td>
+                  <td>(2) 그렇다</td>
+                  <td>(3) 그렇지 않다</td>
+                  <td>(4) 전혀 그렇지 않다</td>
+                </tr>
+                <tr>
+                  <td><%= E1_1 %></td>
+                  <td><%= E2_1 %></td>
+                  <td><%= E3_1 %></td>
+                  <td><%= E4_1 %></td>
+                </tr>
+                <% 
+                  HashMap<String, Object> statistics2 = (HashMap<String, Object>)statistics_list.get(2);
+                  int E1_2 = (int)statistics1.get("E1");
+                  int E2_2 = (int)statistics1.get("E2");
+                  int E3_2 = (int)statistics1.get("E3");
+                  int E4_2 = (int)statistics1.get("E4");
+                %>
+                <tr class="table-light">
+                  <th rowspan="3" class="">3</th>
+                  <th colspan="5">유기동물을 입양할 생각이 있나요?</th>
+                </tr>
+                <tr>
+                  <td>(1) 매우 그렇다</td>
+                  <td>(2) 그렇다</td>
+                  <td>(3) 그렇지 않다</td>
+                  <td>(4) 전혀 그렇지 않다</td>
+                </tr>
+                <tr>
+                  <td><%= E1_2 %></td>
+                  <td><%= E2_2 %></td>
+                  <td><%= E3_2 %></td>
+                  <td><%= E4_2 %></td>
+                </tr>
+                <% 
+                  HashMap<String, Object> statistics3 = (HashMap<String, Object>)statistics_list.get(3);
+                  int E1_3 = (int)statistics1.get("E1");
+                  int E2_3 = (int)statistics1.get("E2");
+                  int E3_3 = (int)statistics1.get("E3");
+                  int E4_3 = (int)statistics1.get("E4");
+                %>
+                <tr class="table-light">
+                  <th rowspan="3" class="">4</th>
+                  <th colspan="5">반려동물을 키울 환경이 준비되어 있나요?</th>
+                </tr>
+                <tr>
+                  <td>(1) 매우 그렇다</td>
+                  <td>(2) 그렇다</td>
+                  <td>(3) 그렇지 않다</td>
+                  <td>(4) 전혀 그렇지 않다</td>
+                </tr>
+                <tr>
+                  <td><%= E1_3 %></td>
+                  <td><%= E2_3 %></td>
+                  <td><%= E3_3 %></td>
+                  <td><%= E4_3 %></td>
+                </tr>
+                <% 
+                  HashMap<String, Object> statistics4 = (HashMap<String, Object>)statistics_list.get(4);
+                  int E1_4 = (int)statistics1.get("E1");
+                  int E2_4 = (int)statistics1.get("E2");
+                  int E3_4 = (int)statistics1.get("E3");
+                  int E4_4 = (int)statistics1.get("E4");
+                %>
+                <tr class="table-light">
+                  <th rowspan="3" class="">5</th>
+                  <th colspan="5">반려동물이 삶의 만족도에 영향을 준다고 생각하시나요?</th>
+                </tr>
+                <tr>
+                  <td>(1) 매우 그렇다</td>
+                  <td>(2) 그렇다</td>
+                  <td>(3) 그렇지 않다</td>
+                  <td>(4) 전혀 그렇지 않다</td>
+                </tr>
+                <tr>
+                  <td><%= E1_4 %></td>
+                  <td><%= E2_4 %></td>
+                  <td><%= E3_4 %></td>
+                  <td><%= E4_4 %></td>
+                </tr>
               </tbody>
             </table>
             </form>

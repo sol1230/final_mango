@@ -41,7 +41,7 @@ public class Statistics1Servlet extends HttpServlet {
         System.out.println(userName.get("NAME"));
         for (int j = 0; j < statistics1_list.size(); j++) {
           statistics1 = statistics1_list.get(j);
-          System.out.println(statistics1.get("U1"));
+          System.out.println(statistics1.get(""));
         }
       }
     } catch (SQLException e) {

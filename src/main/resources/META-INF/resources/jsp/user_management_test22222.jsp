@@ -72,7 +72,7 @@
                   </th>
                 </form>
                   <th>
-                      <a href="/jsp/admin_userInfoModify_test55555.jsp" class="btn btn-outline-secondary opacity-75">수정</a>
+                      <a href="/admin/userManagementServlet?name=modify&user_id=<%= user_id %>" class="btn btn-outline-secondary opacity-75">수정</a>
                       <a href="/admin/userManagementServlet?name=delete&user_id=<%= user_id %>" class="btn btn-outline-danger" onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false">삭제</a>
                       <%-- <input type="hidden" name="delete" value="<%= user_id %>"/> --%>
                       <%-- <input type="submit" name="modify_button" class="btn btn-secondary opacity-75" value="수정"/> --%>

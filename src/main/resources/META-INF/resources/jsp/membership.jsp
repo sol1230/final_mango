@@ -12,7 +12,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../../static/css/font.css" />
+    <link rel="stylesheet" href="/css/font.css" />
   </head>
   <body class="bg-light">
     <div class="container-fluid pb-5">

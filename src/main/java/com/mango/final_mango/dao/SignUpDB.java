@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 public class SignUpDB {
-    public void setUserData(HashMap<String, Object> userData) throws SQLException {
+    public static void setUserData(HashMap<String, Object> userData) throws SQLException {
         
         // DB 연결
         Commons commons = new Commons();
