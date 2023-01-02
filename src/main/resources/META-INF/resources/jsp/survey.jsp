@@ -79,7 +79,7 @@
           </div>
 
           <div class="ms-5 d-flex justify-content-center">
-            <a href="/survey/surveyResultServlets" class="btn btn-success opacity-75">설문 제출</a>
+            <a href="/survey/UserResult" class="btn btn-success opacity-75">설문 제출</a>
           </div>
         </form>
       </main>

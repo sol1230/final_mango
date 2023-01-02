@@ -118,12 +118,12 @@
 
                 <div class="border-bottom opacity-75 mb-4"></div>
                 <div>
-                  <button
-                    type="submit"
-                    class="form-control btn btn-success btn-lg opacity-75"
+                  <a
+                    href="/jsp/signup_done.jsp" type="submit"
+                    class="col form-control btn btn-secondary btn-lg fs-5"
                   >
-                    가입하기
-                  </button>
+                    가입하기</a
+                  >
                 </div>
               </div>
             </form>
