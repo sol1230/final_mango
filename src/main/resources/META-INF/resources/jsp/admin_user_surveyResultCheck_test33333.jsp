@@ -20,6 +20,7 @@
         ArrayList<HashMap> question_list = (ArrayList<HashMap>) request.getAttribute("question_list");
         ArrayList<HashMap> surveyor_answerList = (ArrayList<HashMap>) request.getAttribute("surveyor_answerList");
         HashMap<String, Object> userWithUid = (HashMap<String, Object>) request.getAttribute("userWithUid");
+        String msg = (String) request.getAttribute("msg");
       %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
@@ -27,6 +28,14 @@
       <main class="mt-5 p-1">
         <form action="/admin/userManagementServlet" method="post">
           <div class="mt-5">
+          <% if(msg != null){ %>
+            <div class="fs-3 text-center text-success opacity-75 pt-5 mb-3"><%= msg %></div>
+            <div class="text-center mt-3">
+          <a href="/admin/userList" class="btn btn-success btn-lg opacity-75"
+            >회원목록 페이지로</a
+          >
+        </div>
+          <% } else { %>
             <div class="fs-3 text-center text-success opacity-75 mb-3">'<%= userWithUid.get("NAME") %>'님의 설문결과입니다.</div>
             <table class="table text-center" style="width: 90%">
               <thead>
@@ -54,6 +63,7 @@
               <% } %>
               </tbody>
             </table>
+            <% } %>
           </div>
         </form>
       </main>

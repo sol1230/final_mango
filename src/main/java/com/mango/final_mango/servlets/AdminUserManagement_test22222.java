@@ -35,7 +35,9 @@ public class AdminUserManagement_test22222 extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
+        String msg = "설문을 제출하지 않은 회원입니다.";
+
         // output with html
         // jsp 입장에서 데이터 받는, 서블릿에서 데이터 넘겨주는
         if("delete".equals(name)){
@@ -49,12 +51,18 @@ public class AdminUserManagement_test22222 extends HttpServlet {
             requestDispatcher.forward(request, response);
         } else {
             // admin이 회원의 설문 완료 결과 user_id를 통해 보기
-            request.setAttribute("question_list", question_list);
-            request.setAttribute("surveyor_answerList", surveyor_answerList);
-            request.setAttribute("user_id", user_id);
-            request.setAttribute("userWithUid", userWithUid);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck_test33333.jsp");
-            requestDispatcher.forward(request, response);
+            if(surveyor_answerList.size() != 0){
+                request.setAttribute("question_list", question_list);
+                request.setAttribute("surveyor_answerList", surveyor_answerList);
+                request.setAttribute("user_id", user_id);
+                request.setAttribute("userWithUid", userWithUid);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck_test33333.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                request.setAttribute("msg", msg);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck_test33333.jsp");
+                requestDispatcher.forward(request, response);
+            }
         }
     }
     @Override
