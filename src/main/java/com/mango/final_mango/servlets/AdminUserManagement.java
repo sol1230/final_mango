@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.mango.final_mango.dao.UserWithDB_test22222;
+import com.mango.final_mango.dao.UserWithDB;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,14 +15,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/admin/userManagementServlet")
-public class AdminUserManagement_test22222 extends HttpServlet {
+public class AdminUserManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_id = request.getParameter("user_id");
         // 회원 삭제용 name
         String name = request.getParameter("name");
         
-        UserWithDB_test22222 userWithDB = new UserWithDB_test22222();
+        UserWithDB userWithDB = new UserWithDB();
 
         ArrayList<HashMap> question_list = null;
         ArrayList<HashMap> surveyor_answerList = null;
@@ -47,7 +47,7 @@ public class AdminUserManagement_test22222 extends HttpServlet {
             requestDispatcher.forward(request, response);
         } else if("modify".equals(name)){
             request.setAttribute("user_id", user_id);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_userInfoModify_test55555.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_userInfoModify.jsp");
             requestDispatcher.forward(request, response);
         } else {
             // admin이 회원의 설문 완료 결과 user_id를 통해 보기
@@ -56,11 +56,11 @@ public class AdminUserManagement_test22222 extends HttpServlet {
                 request.setAttribute("surveyor_answerList", surveyor_answerList);
                 request.setAttribute("user_id", user_id);
                 request.setAttribute("userWithUid", userWithUid);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck_test33333.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck.jsp");
                 requestDispatcher.forward(request, response);
             } else {
                 request.setAttribute("msg", msg);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck_test33333.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_user_surveyResultCheck.jsp");
                 requestDispatcher.forward(request, response);
             }
         }

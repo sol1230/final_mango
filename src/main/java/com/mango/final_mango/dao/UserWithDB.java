@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UserWithDB_test22222 {
+public class UserWithDB {
     // 전체 회원 정보 출력
     public ArrayList<HashMap> getUser(String userId, String keyWord, String keyField) throws SQLException{
       Commons commons = new Commons();
@@ -16,7 +16,7 @@ public class UserWithDB_test22222 {
       String query = "SELECT * FROM SURVEYOR WHERE NOT USER_ID='admin'";
       // 검색한 회원 목록 쿼리
       String query2 = "SELECT * FROM SURVEYOR " +
-                      "WHERE "+ keyField +" LIKE '%"+ keyWord + "%' ORDER BY USER_ID";
+                      "WHERE "+ keyField +" LIKE '%"+ keyWord + "%' AND NOT USER_ID='admin' ORDER BY USER_ID";
   
       ResultSet resultSet;
       

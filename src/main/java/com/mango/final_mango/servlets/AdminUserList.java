@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.mango.final_mango.dao.UserWithDB_test22222;
+import com.mango.final_mango.dao.UserWithDB;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,14 +15,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/admin/userList")
-public class AdminUserList_test22222 extends HttpServlet {
+public class AdminUserList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_uid = request.getParameter("USER_ID");
         String keyWord = request.getParameter("keyWord");
         String keyField = request.getParameter("keyField");
 
-        UserWithDB_test22222 userWithDB = new UserWithDB_test22222();
+        UserWithDB userWithDB = new UserWithDB();
 
         ArrayList<HashMap> user_list = null;
         String user_id = request.getParameter("user_id");
@@ -41,7 +41,7 @@ public class AdminUserList_test22222 extends HttpServlet {
 
         request.setAttribute("user_list", user_list);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/user_management_test22222.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/user_management.jsp");
         requestDispatcher.forward(request, response);
     }
     @Override
