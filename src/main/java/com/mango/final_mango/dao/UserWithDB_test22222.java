@@ -12,8 +12,8 @@ public class UserWithDB_test22222 {
       Commons commons = new Commons();
       Statement statement = commons.getStatement();
   
-      // 회원 전체 목록 쿼리
-      String query = "SELECT * FROM SURVEYOR";
+      // admin을 제외한 회원 전체 목록 쿼리
+      String query = "SELECT * FROM SURVEYOR WHERE NOT USER_ID='admin'";
       // 검색한 회원 목록 쿼리
       String query2 = "SELECT * FROM SURVEYOR " +
                       "WHERE "+ keyField +" LIKE '%"+ keyWord + "%' ORDER BY USER_ID";
