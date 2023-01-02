@@ -44,10 +44,18 @@ public class LoginServlets extends HttpServlet {
         String path = null;
         try {
             if(loginWithDB.checkLoginDB(user_id, password)){            
-                httpSession = request.getSession();
-                // 세션 저장
-                httpSession.setAttribute("user_id", user_id);
-                httpSession.setAttribute("password", password);
+                httpSession = request.getSession(false);
+                if(httpSession == null){
+                    // 세션 저장
+                    httpSession = request.getSession();
+                    httpSession.setAttribute("user_id", user_id);
+                    httpSession.setAttribute("password", password);
+                } else {
+                    // else인 경우도 추가해주기
+                    httpSession = request.getSession();
+                    httpSession.setAttribute("user_id", user_id);
+                    httpSession.setAttribute("password", password);
+                }
                 path = "/jsp/a_main.jsp";
 
             }else{
@@ -56,16 +64,13 @@ public class LoginServlets extends HttpServlet {
                     // httpSession = request.getSession();
                     // msg = "로그인 정보가 일치하지 않습니다.";
                     // httpSession.setAttribute("msg", msg);
-
+                    
                     // alert창으로 띄우기(jsp에서는 어떻게?-->msg)
-                    printWriter.println("<script>alert('로그인 정보가 일치하지 않습니다.')");
+                    printWriter.println("<script>alert('로그인 정보가 일치하지 않습니다.'); history.back();</script>");
                     // 전 페이지로 돌아가게 해주는 (아이디 저장 체크 작동 의미 없음)
-                    printWriter.println("history.back();</script>");
                     printWriter.flush();
                 }
                 // path = "/jsp/login.jsp";
-
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
