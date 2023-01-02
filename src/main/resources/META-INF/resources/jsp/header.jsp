@@ -26,10 +26,10 @@
               >통계</a
             >
             <ul class="dropdown-menu mb-3">
-              <a href="/jsp/statistics_1.jsp" class="dropdown-item text-secondary"
+              <a href="/result/statistics1Servlets" class="dropdown-item text-secondary"
                 >설문자별 답변 결과</a
               >
-              <a href="/jsp/statistics_2.jsp" class="dropdown-item text-secondary"
+              <a href="/result/statistics2Servlets" class="dropdown-item text-secondary"
                 >질문별 총 답변수</a
               >
             </ul>

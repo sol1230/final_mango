@@ -27,20 +27,8 @@
         <div class="row" style="margin-top: 8%">
           <div class="ms-2 me-5" style="width: 8rem">
           <form action="/result/ststistics2Servlets" method="get">
-            <button
-              class="btn btn-success opacity-75 mb-2"
-              style="width: 6.5rem; height: 4rem"
-              onclick="location.href='/jsp/statistics_1.jsp'"
-            >
-              설문자별 답변 결과
-            </button>
-            <button
-              class="btn btn-success opacity-75"
-              style="width: rem; height: 4rem"
-              onclick="location.href='/jsp/statistics_2.jsp'"
-            >
-              질문별 총 답변수
-            </button>
+            <a href="/result/statistics1Servlets" class="btn btn-success opacity-75 mb-2" style="width: 6.5rem; height: 4rem">설문자별 답변 결과</a>
+            <a href="/result/statistics2Servlets" class="btn btn-success opacity-75" style="width: rem; height: 4rem">질문별 총 답변수</a>
           </div>
           <div class="col mb-5">
             <table class="table text-center" style="width: 90%">
