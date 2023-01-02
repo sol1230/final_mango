@@ -15,14 +15,14 @@ public class MemberDao {
 		
 		System.out.println(m);
 		
-		// insert문 => 처리된 행수 => 트랜잭션처리
+	
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertMember");
 		
 		try {
-			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			pstmt = conn.prepareStatement(sql); 
 			
 			pstmt.setString(1, m.getUSER_ID());
 			pstmt.setString(2, m.getPASSWORD());
