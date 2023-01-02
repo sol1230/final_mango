@@ -65,7 +65,7 @@
 
 ## 📹구현 영상
 
--[Video]()
+-[Video](https://youtu.be/bIDMNy5KAWk)
 
 ## 🔋주요 코드
 #### 회원 정보 받아오기
