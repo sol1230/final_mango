@@ -38,9 +38,8 @@
    -[sign up DB](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/dao/SignUpDB.java)
 
 2. Servlet  
-   -[sign up Servlet](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/SignUpServlet.java)  
-   -[membership Servlet](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/membership.java)  
-   -[Member](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/Member.java)
+   -[membership Servlet](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/Membership_test/MembershipServlet.java)  
+   -[MembershipBean](https://github.com/sol1230/final_mango/blob/master/src/main/java/com/mango/final_mango/servlets/Membership_test/MembershipBean.java)
 
 #### 📕배하선 : 회원관리
 
