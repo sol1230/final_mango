@@ -37,9 +37,9 @@ public class MembershipServlet extends HttpServlet {
             membershipBean.setPASSWORD(password);
             membershipBean.setPHONE(phone);
             membershipWithDB.insertMember(membershipBean);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done_test22222.jsp");
+            requestDispatcher.forward(request, response);
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/signup_done_test22222.jsp");
-        requestDispatcher.forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
