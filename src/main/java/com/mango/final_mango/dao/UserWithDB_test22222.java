@@ -26,12 +26,12 @@ public class UserWithDB_test22222 {
         ArrayList<HashMap> user_list = new ArrayList<>();
         while(resultSet.next()){
           HashMap<String, Object> user = new HashMap<String, Object>();
-          user.put("USER_ID", resultSet.getString("USER_ID"));
-          user.put("NAME", resultSet.getString("NAME"));
-          user.put("BIRTH_DATE", resultSet.getString("BIRTH_DATE"));
-          user.put("PHONE", resultSet.getString("PHONE"));
-  
-          user_list.add(user);
+            user.put("USER_ID", resultSet.getString("USER_ID"));
+            user.put("NAME", resultSet.getString("NAME"));
+            user.put("BIRTH_DATE", resultSet.getString("BIRTH_DATE"));
+            user.put("PHONE", resultSet.getString("PHONE"));
+    
+            user_list.add(user);
         }
         return user_list;
       } else { // 전체 회원 목록

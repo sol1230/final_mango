@@ -18,7 +18,7 @@
   <body class="bg-light">
       <% 
         String user_id = (String)request.getAttribute("user_id");
-    %>
+      %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
 
