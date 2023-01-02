@@ -22,6 +22,12 @@ public class AdminUserList_test22222 extends HttpServlet {
         UserWithDB_test22222 userWithDB = new UserWithDB_test22222();
 
         ArrayList<HashMap> user_list = null;
+        String user_id = request.getParameter("user_id");
+        String name = request.getParameter("name");
+        String birth_date = request.getParameter("birth_date");
+        String phone = request.getParameter("phone");
+ 
+        userWithDB.modifyUserInfo(user_id, name, birth_date, phone);
 
         try {
             user_list = userWithDB.getUser();
@@ -34,5 +40,9 @@ public class AdminUserList_test22222 extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/user_management_test22222.jsp");
         requestDispatcher.forward(request, response);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
     }
 }
