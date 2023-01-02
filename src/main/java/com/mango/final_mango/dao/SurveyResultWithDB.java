@@ -10,49 +10,68 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SurveyResultWithDB {
-  String user_id; //session
 
   // 내 설문 조회
-  public ArrayList<HashMap> getmySurvey() throws SQLException {
+  // 설문 완료 사용자 확인
+  public boolean checkUser(String user_id) throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
 
     String query =
-      "SELECT * FROM USERS_ANSWER " +
-      "WHERE USER_ID = '" +
+      "SELECT COUNT(USER_ID) AS COUNT FROM USERS_ANSWER WHERE USER_ID = '" +
       user_id +
-      "'" +
-      "ORDER BY QUESTION_UID ";
-
+      "'";
     ResultSet resultSet = statement.executeQuery(query);
-    ArrayList<HashMap> answers = new ArrayList<>();
-    HashMap<String, Object> userAnswer = null;
+    String count = null;
     while (resultSet.next()) {
-      userAnswer = new HashMap<>();
-      userAnswer.put("USER_ID", resultSet.getString("USER_ID"));
-      userAnswer.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
-      userAnswer.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
-
-      answers.add(userAnswer);
+      count = resultSet.getString("COUNT");
     }
-    return answers;
+    int count1 = Integer.parseInt(count);
+    boolean checkUser;
+    if (count1 > 0) {
+      checkUser = true;
+    } else {
+      checkUser = false;
+    }
+    return checkUser;
   }
 
-  public String getUserName() throws SQLException {
+  // public ArrayList<HashMap> getmySurvey(String user_id) throws SQLException {
+  //   Commons commons = new Commons();
+  //   Statement statement = commons.getStatement();
+
+  //   String query =
+  //     "SELECT * FROM USERS_ANSWER " +
+  //     "WHERE USER_ID = '" +
+  //     user_id +
+  //     "'" +
+  //     "ORDER BY QUESTION_UID ";
+
+  //   ResultSet resultSet = statement.executeQuery(query);
+  //   ArrayList<HashMap> answers = new ArrayList<>();
+  //   HashMap<String, Object> userAnswer = null;
+  //   while (resultSet.next()) {
+  //     userAnswer = new HashMap<>();
+  //     userAnswer.put("USER_ID", resultSet.getString("USER_ID"));
+  //     userAnswer.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
+  //     userAnswer.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
+
+  //     answers.add(userAnswer);
+  //   }
+  //   return answers;
+  // }
+
+  public String getUserName(String user_id) throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
 
     String query =
       "SELECT * FORM SURVEYOR " + "WHERE USER_ID = '" + user_id + "'";
 
-    String userName = "";
-    try {
-      ResultSet resultSet = statement.executeQuery(query);
-      while (resultSet.next()) {
-        userName = resultSet.getString("NAME");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    String userName = null;
+    ResultSet resultSet = statement.executeQuery(query);
+    while (resultSet.next()) {
+      userName = resultSet.getString("NAME");
     }
     return userName;
   }

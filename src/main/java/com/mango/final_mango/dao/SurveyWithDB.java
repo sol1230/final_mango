@@ -51,12 +51,6 @@ public class SurveyWithDB {
     return answers_list;
   }
 
-  // 설문 완료 사용자 확인
-  public void checkUser(String user_id) {
-    Commons commons = new Commons();
-    Statement statement = commons.getStatement();
-  }
-
   // 새로운 설문 결과 DB에 추가
   public void insertSurvey(
     String user_id,

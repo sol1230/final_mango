@@ -18,8 +18,8 @@
   </head>
   <body class="bg-light">
   <%
-    ArrayList<HashMap> userSurvey = (ArrayList<HashMap>)request.getAttribute("userSurvey");
-    ArrayList<HashMap> question_list = (ArrayList<HashMap)request.getAttribute("question_list");
+     ArrayList<HashMap> question_list = (ArrayList<HashMap>)request.getAttribute("question_list");
+    ArrayList<HashMap> answers_list = (ArrayList<HashMap>)request.getAttribute("answers_list");
     String userName = (String) request.getAttribute("userName");
   %>
     <div class="container pb-5">
@@ -50,22 +50,21 @@
               </div>
             </div>
 
-            <button
+            <a href="/survey/surveyResultServlets"
               class="btn btn-success opacity-75"
               style="width: rem; height: 4rem"
-              onclick="location.href='/jsp/survey_result.jsp'"
             >
               설문 결과 조회
-            </button>
+            </a>
           </div>
           <%-- result --%>
           <div class="col d-flex justify-content-center mt-5">
             <table class="table text-center" style="width: 90%">
               <thead>
                 <tr class="table-light">
-                  <th><%= userName %></th>
+                  <th>설문자 명</th>
                     <%
-                      for(int i = 0; i< userSurvey.size(); i++){
+                      for(int i = 0; i< question_list.size(); i++){
                         HashMap<String,Object> question = question_list.get(i);
                     %>
                   <th><%= question.get("QUESTION_LIST") %></th>
@@ -74,9 +73,10 @@
               </thead>
               <tbody>
                 <tr>
+                <td><%= userName %>
                 <%
-                  for(int j = 0; j <userSurvey.size(); j++){
-                    HashMap<String, Object> answers = userSurvey.get(i);
+                  for(int j = 0; j <answers_list.size(); j++){
+                    HashMap<String, Object> answers = answers_list.get(ㅓ);
                 %>
                   <td><%= answers.get("ANSWER_UID") %></td>
                 </tr>
