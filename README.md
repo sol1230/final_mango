@@ -58,7 +58,40 @@
 -[Video]()
 
 ## 🔋주요 코드
+#### 회원 정보 받아오기
 
 ```
-
+        <% 
+         HashMap<String, Object> userWithUid = (HashMap<String, Object>) request.getAttribute("userWithUid");
+         %>
+                 <form action="/admin/userManagementServlet" method="post">
+                <tr>
+                  <% String user_id = (String)userWithUid.get("USER_ID"); %>
+                  <th><%= user_id %></th>
+                  <th><%= userWithUid.get("NAME") %></th>
+                  <th><%= userWithUid.get("BIRTH_DATE") %></th>
+                  <th><%= userWithUid.get("PHONE") %></th>
+                  <th>
+                      <input type="submit" class="btn btn-outline-secondary opacity-75" value="보기"/>
+                      <input type="hidden" name="user_id" value="<%= user_id %>"/>
+                  </th>
+                </form>
 ```
+
+#### 질문, 답변 받아오기
+````
+ <% 
+                for (int i = 0; i < question_list.size(); i++){ 
+                  HashMap<String,Object> question = question_list.get(i);
+                  HashMap<String, Object> surveyor_answer = surveyor_answerList.get(i);
+            %>
+              <tr>                  
+                  <th class="text-center"> 
+                    <%-- 질문 출력 --%>
+                     <%= question.get("QUESTION_LIST") %> 
+                  </th>
+                  <th>
+                    <%-- 답변 출력 --%>
+                    <%= surveyor_answer.get("ANSWER_LIST") %>
+                  </th>
+ ````
