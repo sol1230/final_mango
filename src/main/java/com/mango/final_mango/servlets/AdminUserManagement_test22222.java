@@ -43,6 +43,10 @@ public class AdminUserManagement_test22222 extends HttpServlet {
             userWithDB.deleteUserInfo(user_id);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/userList");
             requestDispatcher.forward(request, response);
+        } else if("modify".equals(name)){
+            request.setAttribute("user_id", user_id);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_userInfoModify_test55555.jsp");
+            requestDispatcher.forward(request, response);
         } else {
             // admin이 회원의 설문 완료 결과 user_id를 통해 보기
             request.setAttribute("question_list", question_list);

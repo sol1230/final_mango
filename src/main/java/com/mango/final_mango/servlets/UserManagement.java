@@ -21,16 +21,21 @@ public class UserManagement extends HttpServlet {
         String user_uid = request.getParameter("USER_ID");
         String keyWord = request.getParameter("keyWord");
         String keyField = request.getParameter("keyField");
+        String userDelete = request.getParameter("userDelete");
+
         UserWithDB userWithDB = new UserWithDB();
         ArrayList<HashMap> user_list = null;
+        ArrayList<HashMap> user_delete_list = null;
 
         try {
             user_list = userWithDB.getUser(user_uid, keyWord, keyField);
+            user_delete_list = userWithDB.getUserDelete(userDelete);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         request.setAttribute("user_list", user_list);
+        request.setAttribute("user_delete_list", user_delete_list);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/user_management.jsp");
         requestDispatcher.forward(request, response);

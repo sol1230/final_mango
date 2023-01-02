@@ -16,13 +16,16 @@
     <link rel="stylesheet" href="/css/font.css" />
   </head>
   <body class="bg-light">
+      <% 
+        String user_id = (String)request.getAttribute("user_id");
+      %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
 
       <main class="mt-5 p-1">
         <div class="mt-5">
             <div class="fs-3 text-center text-success opacity-75 mb-3">회원 정보 수정</div>
-            <form action="/admin/userModifyServlet" method="post">
+            <form action="/admin/userList" method="post">
                 <table class="table text-center">
                     <thead>
                         <tr class="table-success opacity-75">
@@ -35,7 +38,7 @@
                     </thead>
                     <tbody class="align-middle">
                         <tr>
-                            <th><input type="text" class="form-control" name="user_id" value="아이디"></th>
+                            <th><input type="text" class="form-control" name="user_id" value="<%= user_id %>"></th>
                             <th><input type="text" class="form-control" name="name" value="이름"></th>
                             <th><input type="text" class="form-control" name="birth_date" value="생년월일"></th>
                             <th><input type="text" class="form-control" name="phone" value="전화번호"></th>
