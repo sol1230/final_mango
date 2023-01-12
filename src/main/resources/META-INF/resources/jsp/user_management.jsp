@@ -22,22 +22,17 @@
       <main class="mt-5 p-1">
           <div class="mt-5">
             <div class="fs-3 text-center text-success opacity-75 mb-3">회원관리 페이지</div>
-              <%-- <form action="/admin/userManagementServlet" method="post">
-              <div class="input-group mb-3">
-                <input type="text" name="user_id" class="form-control" placeholder="찾으시는 회원의 ID를 검색해주세요."/>
-                <input type="submit" name="search" class="btn btn-secondary opacity-75" value="검색"/>
-                <%-- <a href="" class="btn btn-secondary">Search</a> --%>
-              <%-- </div>
-            </form> --%>
-          <form action="/admin/userList">
-            <select name="keyField" id="">
-              <option value="NAME">이름</option>
-              <option value="BIRTH_DATE">생년월일</option>
-              <option value="PHONE">전화번호</option>
-            </select>
-            <input type="text" name="keyWord" id="">
-            <button type="submit" class="btn btn-success opacity-75">검색</button>
-          </form>
+            <form action="/admin/userList">
+              <div class="d-flex input-group w-50">
+                <select class="form-select" name="keyField" id="">
+                  <option value="NAME">이름</option>
+                  <option value="BIRTH_DATE">생년월일</option>
+                  <option value="PHONE">전화번호</option>
+                </select>
+                <input class="form-control w-50" type="text" name="keyWord" id="">
+                <button type="submit" class="btn btn-success opacity-75">검색</button>
+              </div>
+            </form>
             <table class="table text-center mt-3">
               <thead>
                 <tr class="table-success opacity-75">
@@ -59,24 +54,40 @@
                           HashMap<String, Object> user = user_list.get(i);
                   %>
                 <tr>
-                  <% String user_id = (String)user.get("USER_ID"); %>
-                  <% String name = (String)user.get("NAME"); %>
-                 <form action="/admin/userManagementServlet" method="post">
+                <% String user_id = (String)user.get("USER_ID");
+                    String name = (String)user.get("NAME");
+                    String birth_date = (String)user.get("BIRTH_DATE");
+                    String phone = (String)user.get("PHONE"); %>
+                <form action="/admin/userManagementServlet" method="post">
                   <th><%= user_id %></th>
                   <th><%= name %></th>
-                  <th><%= user.get("BIRTH_DATE") %></th>
-                  <th><%= user.get("PHONE") %></th>
+                  <th><%= birth_date %></th>
+                  <th><%= phone %></th>
                   <th>
                       <input type="submit" class="btn btn-outline-secondary opacity-75" value="보기"/>
                       <input type="hidden" name="user_id" value="<%= user_id %>"/>
                   </th>
                 </form>
                   <th>
-                      <a href="/admin/userManagementServlet?name=modify&user_id=<%= user_id %>" class="btn btn-outline-secondary opacity-75">수정</a>
-                      <a href="/admin/userManagementServlet?name=delete&user_id=<%= user_id %>" class="btn btn-outline-danger" onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false">삭제</a>
-                      <%-- <input type="hidden" name="delete" value="<%= user_id %>"/> --%>
-                      <%-- <input type="submit" name="modify_button" class="btn btn-secondary opacity-75" value="수정"/> --%>
-                      <%-- <input type="hidden" name="modify" value="<%= user_id %>"/> --%>
+                    <div class="d-flex justify-content-center">
+                      <form action="/admin/userManagementServlet?name=modify" method="post">  
+                        <%-- <a href="/admin/userManagementServlet?name=modify" class="btn btn-outline-secondary opacity-75">수정</a> --%>
+                        <input type="submit" class="btn btn-outline-secondary opacity-75" value="수정"/>
+                        <%-- <input type="hidden" name="modify" value="modify"/> --%>
+                        <input type="hidden" name="user_id" value="<%= user_id %>"/>
+                        <input type="hidden" name="user_name" value="<%= name %>"/>
+                        <input type="hidden" name="birth_date" value="<%= birth_date %>"/>
+                        <input type="hidden" name="phone" value="<%= phone %>"/>
+                      </form>
+                      <form class="ms-1" action="/admin/userManagementServlet?name=delete" method="post">
+                          <input type="submit" class="btn btn-outline-danger" value="삭제" onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"/>
+                          <input type="hidden" name="user_id" value="<%= user_id %>"/>
+                          <%-- <a href="/admin/userManagementServlet?name=delete" class="btn btn-outline-danger" onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false">삭제</a> --%>
+                          <%-- <input type="hidden" name="delete" value="<%= user_id %>"/> --%>
+                          <%-- <input type="submit" name="modify_button" class="btn btn-secondary opacity-75" value="수정"/> --%>
+                          <%-- <input type="hidden" name="modify" value="<%= user_id %>"/> --%>
+                      </form>
+                    </div>
                   </th>
                   <%-- <th><input name="<%= user_id %>" id="<%= user_id %>" class="btn btn-secondary opacity-75" type="submit" value="보기" /></th> --%>
                   <%-- <th><a href="/admin/userManagementServlet?user_id=<%= user_id %>&name=<%= name %>" class="btn btn-secondary opacity-75">보기</a></th> --%>

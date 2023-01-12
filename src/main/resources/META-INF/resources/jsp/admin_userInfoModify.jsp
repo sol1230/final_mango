@@ -18,6 +18,9 @@
   <body class="bg-light">
       <% 
         String user_id = (String)request.getAttribute("user_id");
+        String modify_name = (String)request.getAttribute("modify_name");
+        String birth_date = (String)request.getAttribute("birth_date");
+        String phone = (String)request.getAttribute("phone");
       %>
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
@@ -39,9 +42,9 @@
                     <tbody class="align-middle">
                         <tr>
                             <th><input type="text" class="form-control" name="user_id" value="<%= user_id %>"></th>
-                            <th><input type="text" class="form-control" name="name" placeholder="이름"></th>
-                            <th><input type="text" class="form-control" name="birth_date" placeholder="생년월일"></th>
-                            <th><input type="text" class="form-control" name="phone" placeholder="전화번호"></th>
+                            <th><input type="text" class="form-control" name="name" value="<%= modify_name %>" placeholder="이름"></th>
+                            <th><input type="text" class="form-control" name="birth_date" value="<%= birth_date %>" placeholder="생년월일"></th>
+                            <th><input type="text" class="form-control" name="phone" value="<%= phone %>" placeholder="전화번호"></th>
                             <th><input type="submit" class="btn btn-outline-secondary opacity-75" value="수정하기"></th>
                         </tr>
                     </tbody>

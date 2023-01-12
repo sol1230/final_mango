@@ -21,7 +21,11 @@ public class AdminUserManagement extends HttpServlet {
         String user_id = request.getParameter("user_id");
         // 회원 삭제용 name
         String name = request.getParameter("name");
-        
+        // 회원 수정용 회원정보 가져오기
+        String modify_name = request.getParameter("user_name");
+        String birth_date = request.getParameter("birth_date");
+        String phone = request.getParameter("phone");
+
         UserWithDB userWithDB = new UserWithDB();
 
         ArrayList<HashMap> question_list = null;
@@ -47,6 +51,9 @@ public class AdminUserManagement extends HttpServlet {
             requestDispatcher.forward(request, response);
         } else if("modify".equals(name)){
             request.setAttribute("user_id", user_id);
+            request.setAttribute("modify_name", modify_name);
+            request.setAttribute("birth_date", birth_date);
+            request.setAttribute("phone", phone);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/admin_userInfoModify.jsp");
             requestDispatcher.forward(request, response);
         } else {
