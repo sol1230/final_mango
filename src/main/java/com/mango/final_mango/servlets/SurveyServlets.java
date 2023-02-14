@@ -46,6 +46,7 @@ public class SurveyServlets extends HttpServlet {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
     request.setAttribute("question_list", question_list);
     request.setAttribute("answers_list", answers_list);
     // jsp로 작동하도록 방향 트는 url 인스턴스화(=printWriter 대체용)
@@ -54,5 +55,9 @@ public class SurveyServlets extends HttpServlet {
     );
     // forward하면서 request, response 모두 넘겨주는
     requestDispatcher.forward(request, response);
+  }
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      this.doGet(req, resp);
   }
 }

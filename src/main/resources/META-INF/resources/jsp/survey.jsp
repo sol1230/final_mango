@@ -25,61 +25,63 @@
     <div class="container pb-5">
       <%@ include file="header.jsp" %>
       <main class="mt-5 p-1">
-        <div class="row" style="margin-top: 8%">
-        <%-- 설문버튼 --%>
-          <div class="ms-2" style="width: 8rem">
-            <form action="/survey/SurveyServlets" method="get">
-            <a
-              href="#modalTarget02"
-              class="btn btn-success opacity-75 mb-2 text-middle p-3"
-              style="width: 6.5rem; height: 4rem"
-              data-bs-toggle="modal"
-              >설문 조사</a
-            >
-            <a href="/jsp/survey_result.jsp"
-              class="btn btn-success opacity-75"
-              style="width: rem; height: 4rem"
-            >
-              설문 결과 조회
-            </a>
-          </div>
+        <form action="/survey/surveyResultServletsTest" method="post">
+          <div class="row" style="margin-top: 8%">
+          <%-- 설문버튼 --%>
+            <div class="ms-2" style="width: 8rem">
+                <a
+                  href="#modalTarget02"
+                  class="btn btn-success opacity-75 mb-2 text-middle p-3"
+                  style="width: 6.5rem; height: 4rem"
+                  data-bs-toggle="modal"
+                  >설문 조사</a
+                >
+                <a href="/survey/surveyResultServletsTest"
+                  class="btn btn-success opacity-75"
+                  style="width: rem; height: 4rem"
+                >
+                  설문 결과 조회
+                </a>
+            </div>
 
-          <%-- survey --%>
-          <div class="col text-center ms-5">
-            <table class="table text-center table-striped" style="width: 90%">
-              <tbody>
-            <%-- 질문 출력 --%>
-            <% 
-                for (int i = 0; i < question_list.size(); i++){ 
-                  HashMap<String,Object> question = question_list.get(i);
-            %>
-              <tr>                  
-                  <th class="text-center" colspan="5"> 
-                     <%= question.get("QUESTION_LIST") %> 
-                  </th>
-              </tr>
-              <tr>
-                <td>답</td>
-                <%-- 답변 출력 --%>
-                <%
-                  for(int j = 0; j < answers_list.size(); j++){
-                    HashMap<String,Object> answers = answers_list.get(j);
-                %>
-                  <td>
-                    <input type="radio" class="form-check-input" name="<%= question.get("QUESTION_UID") %>" id="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" value="<%= answers.get("ANSWER_UID") %>"/>
-                    <label for="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" class="form-check-label">
-                      <%= answers.get("ANSWER_LIST") %>
-                    </label>
-                  </td>
-                <% } %>
+            <%-- survey --%>
+            <div class="col text-center ms-5">
+              
+              <table class="table text-center table-striped" style="width: 90%">
+                <tbody>
+              <%-- 질문 출력 --%>
+              <% 
+                  for (int i = 0; i < question_list.size(); i++){ 
+                    HashMap<String,Object> question = question_list.get(i);
+              %>
+                <tr>                  
+                    <th class="text-center" colspan="5"> 
+                      <%= question.get("QUESTION_LIST") %> 
+                    </th>
                 </tr>
-              <% } %>
-              </tbody>
-            </table>
-          </div>
+                <tr>
+                  <td>답</td>
+                  <%-- 답변 출력 --%>
+                  <%
+                    for(int j = 0; j < answers_list.size(); j++){
+                      HashMap<String,Object> answers = answers_list.get(j);
+                  %>
+                    <td>
+                      <input type="radio" class="form-check-input" name="<%= question.get("QUESTION_UID") %>" id="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" value="<%= answers.get("ANSWER_UID") %>" required="required"/>
+                      <label for="<%= question.get("QUESTION_UID") %><%= answers.get("ANSWER_UID") %>" class="form-check-label">
+                        <%= answers.get("ANSWER_LIST") %>
+                      </label>
+                    </td>
+                  <% } %>
+                  </tr>
+                <% } %>
+                </tbody>
+              </table>
+            </div>
 
-          <div class="ms-5 d-flex justify-content-center">
-            <a href="/jsp/test_surveysubmit.jsp" class="btn btn-success opacity-75">설문 제출</a>
+            <div class="ms-5 d-flex justify-content-center">
+              <input type="submit" class="btn btn-success opacity-75" value="설문 제출" />
+            </div>
           </div>
         </form>
       </main>

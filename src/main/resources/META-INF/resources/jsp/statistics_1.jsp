@@ -46,9 +46,34 @@
                 </tr>
               </thead>
               <tbody>
+                <% for(int i = 1; i < userName_list.size(); i++) { 
+                  HashMap<String, Object> userName = (HashMap<String, Object>)userName_list.get(i); %>
+                  <tr>
+                    <td><%= userName.get("NAME") %></td>
+                    <% for(int j = 0; j < statistics1_list.size(); j++) { 
+                      HashMap<String, Object> statistics1 = (HashMap<String, Object>)statistics1_list.get(j);
+                      String answer = (String)statistics1.get("ANSWER_LIST"); %>
+                      <td><%= answer %></td>
+                    <% } %>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <table class="table text-center" style="width: 90%">
+              <thead>
+                <tr class="table-success opacity-75">
+                  <th>설문자 명</th>
+                  <th>설문 1</th>
+                  <th>설문 2</th>
+                  <th>설문 3</th>
+                  <th>설문 4</th>
+                  <th>설문 5</th>
+                </tr>
+              </thead>
+              <tbody>
               <%-- 통계 출력 --%>
               <% 
-                HashMap<String, Object> usersName0 = (HashMap<String, Object>)userName_list.get(0);
+                HashMap<String, Object> usersName0 = (HashMap<String, Object>)userName_list.get(1);
                 String name0 = (String)usersName0.get("NAME");
               %>
                 <tr class="table-light">

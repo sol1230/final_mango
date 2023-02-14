@@ -33,6 +33,21 @@ public class SurveyResultWithDB {
     return checkUser;
   }
 
+  // SH
+  // DB에 설문 제출한 답변 넣기
+  public void insertAnswer(String user_id, String q1, String q2, String q3, String q4, String q5) {
+    Commons commons = new Commons();
+    Statement statement = commons.getStatement();
+
+    String query = "INSERT INTO USERS_ANSWER (USER_ID, ANSWER_UID, QUESTION_UID) "+
+                    "VALUE ('"+user_id+"', '"+q1+"', 'Q1'), ('"+user_id+"', '"+q2+"', 'Q2'), ('"+user_id+"', '"+q2+"', 'Q3'), ('"+user_id+"', '"+q3+"', 'Q4'), ('"+user_id+"', '"+q5+"', 'Q5')";
+    try {
+      statement.execute(query);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
   public ArrayList<HashMap> getmySurvey(String user_id) throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
@@ -58,19 +73,19 @@ public class SurveyResultWithDB {
     return answers;
   }
 
-  public HashMap<String, Object> getUserName(String user_id)
-    throws SQLException {
+  public String getUserName(String user_id) throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
 
-    String query =
-      "SELECT * FORM SURVEYOR " + "WHERE USER_ID = '" + user_id + "'";
+    String query = "SELECT * FROM SURVEYOR WHERE USER_ID='" + user_id + "'";
 
     ResultSet resultSet = statement.executeQuery(query);
-    HashMap<String, Object> userName = null;
+    // HashMap<String, Object> userName = null;
+    String userName = "";
     while (resultSet.next()) {
-      userName = new HashMap<>();
-      userName.put("NAME", resultSet.getString("NAME"));
+      // userName = new HashMap<>();
+
+      userName = resultSet.getString("NAME");
     }
     return userName;
   }
@@ -150,13 +165,15 @@ public class SurveyResultWithDB {
     return userName_list;
   }
 
-  // 답변 결과 출력
-
+  // SH
+  // 설문자별 답변 결과 출력
   public ArrayList<HashMap> getStatistics1_2() throws SQLException {
     Commons commons = new Commons();
     Statement statement = commons.getStatement();
 
-    String query = "SELECT * FROM USERS_ANSWER ";
+    String query = "SELECT * FROM SURVEYOR INNER JOIN USERS_ANSWER "+
+                    "ON SURVEYOR.USER_ID = USERS_ANSWER.USER_ID INNER JOIN ANSWER "+
+                    "ON USERS_ANSWER.ANSWER_UID = ANSWER.ANSWER_UID ORDER BY SURVEYOR.USER_ID, USERS_ANSWER.QUESTION_UID";
 
     ResultSet resultSet = statement.executeQuery(query);
 
@@ -165,13 +182,35 @@ public class SurveyResultWithDB {
     while (resultSet.next()) {
       statistics1 = new HashMap<>();
       statistics1.put("USER_ID", resultSet.getString("USER_ID"));
-      statistics1.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
-      statistics1.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
+      statistics1.put("NAME", resultSet.getString("NAME"));
+      statistics1.put("ANSWER_LIST", resultSet.getString("ANSWER_LIST"));
 
       statistics1_list.add(statistics1);
     }
     return statistics1_list;
   }
+
+  // 답변 결과 출력
+  // public ArrayList<HashMap> getStatistics1_2() throws SQLException {
+  //   Commons commons = new Commons();
+  //   Statement statement = commons.getStatement();
+
+  //   String query = "SELECT * FROM USERS_ANSWER ";
+
+  //   ResultSet resultSet = statement.executeQuery(query);
+
+  //   ArrayList<HashMap> statistics1_list = new ArrayList<>();
+  //   HashMap<String, Object> statistics1 = null;
+  //   while (resultSet.next()) {
+  //     statistics1 = new HashMap<>();
+  //     statistics1.put("USER_ID", resultSet.getString("USER_ID"));
+  //     statistics1.put("ANSWER_UID", resultSet.getString("ANSWER_UID"));
+  //     statistics1.put("QUESTION_UID", resultSet.getString("QUESTION_UID"));
+
+  //     statistics1_list.add(statistics1);
+  //   }
+  //   return statistics1_list;
+  // }
 
   // 질문별 총 답변 수
   public ArrayList<HashMap> getStatistics2() throws SQLException {

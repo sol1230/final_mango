@@ -20,37 +20,37 @@
   <%
      ArrayList<HashMap> question_list = (ArrayList<HashMap>)request.getAttribute("question_list");
     ArrayList<HashMap> answers_list = (ArrayList<HashMap>)request.getAttribute("answers_list");
-    HashMap<String, Object> userName = (HashMap<String, Object>)request.getAttribute("userName");
+    String userName = (String)request.getAttribute("userName");
   %>
-    <div class="container pb-5">
+    <div class="container mb-5 pb-5">
     <%@ include file="header.jsp" %>
      
     
       <main class="mt-5 p-1">
         <div class="row" style="margin-top: 8%">
           <div class="ms-2" style="width: 8rem">
-          <form action="/survey/UserResult" method="get">
-            <a
-              href="#modalTarget02"
-              class="btn btn-success opacity-75 mb-2 text-middle p-3"
-              style="width: 6.5rem; height: 4rem"
-              data-bs-toggle="modal"
-              >설문 조사</a
-            >
-            <div class="modal fade" id="modalTarget02">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-body">이미 설문을 제출 하셨습니다.</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">
-                      Close
-                    </button>
+            <form action="/survey/surveyResultServletsTest" method="post">
+              <a
+                href="#modalTarget02"
+                class="btn btn-success opacity-75 mb-2 text-middle p-3"
+                style="width: 6.5rem; height: 4rem"
+                data-bs-toggle="modal"
+                >설문 조사</a>
+              <div class="modal fade" id="modalTarget02">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-body">이미 설문을 제출 하셨습니다.</div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
 
-            <a href="/survey/UserResult"
+            <a href="/survey/surveyResultServletsTest"
               class="btn btn-success opacity-75"
               style="width: rem; height: 4rem"
             >
@@ -58,27 +58,27 @@
             </a>
           </div>
           <%-- result --%>
-          <div class="col d-flex justify-content-center mt-5">
-            <table class="table text-center" style="width: 90%">
+          <div class="col d-flex justify-content-center">
+            <table class="table text-center">
               <thead>
-                <tr class="table-light">
-                  <th><%= userName.get("NAME") %></th>
-                    <%
-                      for(int i = 0; i< question_list.size(); i++){
-                        HashMap<String,Object> question = question_list.get(i);
-                        HashMap<String, Object> answers = answers_list.get(i);
-                    %>
-                  <th><%= question.get("QUESTION_LIST") %></th>
+                <tr class="table-success">
+                  <th class="h5" colspan="2"><%= userName %></th>
                 </tr>
               </thead>
               <tbody>
+                <%
+                  for(int i = 0; i< question_list.size(); i++){
+                    HashMap<String,Object> question = question_list.get(i);
+                    HashMap<String, Object> answers = answers_list.get(i);
+                %>
                 <tr>
+                  <th><%= question.get("QUESTION_LIST") %></th>
                   <td><%= answers.get("ANSWER_LIST") %></td>
                 </tr>
-              </tbody>
               <%    } %>
+              </tbody>
             </table>
-            </form>
+
           </div>
         </div>
       </main>
